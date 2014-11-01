@@ -1,0 +1,364 @@
+%%%%%%%%%%%%%%%%%% PREAMBLE BEGIN %%%%%%%%%%%%%%%%%%
+% A templet for mathematical LaTeX2e documents - partially based on the preambles avaible at http://psi.nbi.dk/groups/psi/wiki/Preamble
+
+
+%%%%%%%%%%%%%%%%%% ESSENTIAL FORMATTING %%%%%%%%%%%%%%%%%%
+% \documentclass[a4paper,11pt,notitlepage]{report}
+% \documentclass[a4paper,11pt]{report}
+\documentclass[a4paper,11pt]{scrartcl}
+% If activated, labels will be shown in the margin. Use only when in draft mode.
+%\usepackage[notref,notcite]{showkeys}
+
+
+
+%%%%%%%%%%%%%%%%%% FOR DANISH DOCUMENTS %%%%%%%%%%%%%%%%%%
+
+% Chapters is given danish names and so on.
+\usepackage[danish]{babel}
+
+% For use on Unix systems (Mac/Linux). Use this or the one below.
+\usepackage[utf8]{inputenc}
+
+% Makes commas work as decimal-points (fixes the spacing around.
+\usepackage{icomma}
+
+% For use on Windows systems. Use this or the one above.
+% \usepackage[T1]{fontenc}
+
+
+
+
+%%%%%%%%%%%%%%%%%% ESSENTIAL PACKAGES %%%%%%%%%%%%%%%%%%
+% Better mathematics ;-)
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+
+% \makeindex generates index, required for the TOC. Remember to compile two times to ensure that all changes and reffrences have been updated properly!
+\usepackage{makeidx}
+
+% Typesets the pagenumber of the last page by entering \pageref{Lastpage}
+\usepackage{lastpage}
+
+% Include external graphics files. Note for scaling graphics: for scaling the graphic to, for instance, 45 % of the pagewidth, the command "\includegraphics[width=0.55\textwidth]{./imagefile.png}" may be used (\linewidth also work - espicially useful when working in a multicolulm-document, NOT created be the multicol-package). Documentation: https://secure.wikimedia.org/wikibooks/en/wiki/LaTeX/Importing_Graphics#Including_graphics
+\usepackage{graphicx}
+
+
+
+
+%%%%%%%%%%%%%%%%%% ADDITIONAL FORMATTING %%%%%%%%%%%%%%%%%%
+% Defines a new command to make sure the document title are spelled in the same way throughout the document. Use \mytitle when referring to the title.
+\newcommand{\mytitle}{  }
+
+% Defines a new command to make sure all document subtitle are the same throughout the document. Use \mysubtitle when referring to the documents subtitle. If left empty it will appear as if no subtitle was there (it will not use 'empty' space).
+\newcommand{\mysubtitle}{  }
+
+%Sets the "global date" of the document.You may choose whatever date you want. In case you don't want to display a date you can just leave it blank and it will have no effect on the lay-out. Sets the dato to "todays date" by default.
+\newcommand{\mydate}{\today}
+
+% Adds space between lines. The default linespace is multiplied by the argument ( decimal nuber -- use . instead of , ).
+% \linespread{1.15}
+
+% Sets the indentation for new paragraphs. Per default LaTeX creates some indentation whenever a new paragraph begins. While this might look visually pleasing, it's an english/american convention, and not "correct" danish typestting.
+% \parindent=0pt
+
+% Overfull hbox under 3pt ignoreres - makes LaTeX a but less fussy, but might also make things look a little bit less pleasing to the eye.
+\hfuzz=3pt
+
+% Sets the maximal "depth" of the TOC to 3.
+\setcounter{tocdepth}{3}
+
+% Sets the depth of numbered 3, the default value is 2.
+\setcounter{secnumdepth}{2}
+
+% This package allows you to custimize your titles, subtitle, subsubtitles and so forth. Only works with some documentstyles, Report and Article included. Current setting set all titles to be typeset in a sans-serif font. Unlike when you format the title manually, the formatting is not duplicated in the TOC. Documentation: http://www.ctex.org/documents/packages/layout/sectsty.pdf
+% \usepackage{sectsty}
+%     \allsectionsfont{\sffamily}
+
+% % Sets the indentationlength for new equations.
+% \setlength{\mathindent}{2.4cm}
+
+%     *** Explanation of the enumerations ***
+% Command 						Level 			Comment
+%
+% \part{part} 						-1	 		not in letters
+% \chapter{chapter}		 			0 			only books and reports
+% \section{section} 					1 			not in letters
+% \subsection{subsection} 				2 			not in letters
+% \subsubsection{subsubsection}	 			3 			not in letters
+% \paragraph{paragraph} 				4 			not in letters
+% \subparagraph{subparagraph} 				5 			not in letters
+% Source: https://secure.wikimedia.org/wikibooks/en/wiki/LaTeX/Document_Structure#Sectioning_Commands
+
+
+% Sets rules for equation numbering to follow a section or subsection ( replace the "section" -argument with subsection ). Default values set gives equation 3 in section 1 the number (tag) (1.3). Docuentation: http://en.wikibooks.org/wiki/LaTeX/Tips_and_Tricks#Grouping_Figure.2FEquation_Numbering_by_Section
+\numberwithin{equation}{section}
+
+
+%   ***   Margins:   ***
+%\usepackage{vmargin}
+%\setpapersize{A4}
+%\setmarginsrb{30mm}{20mm}{30mm}{20mm}{12pt}{11mm}{0pt}{11mm}				% Arguments:{hleftmargini}{htopmargini}{hrightmargini}{hbottommargini}
+
+% Makes page margins narrower than usual.
+%\usepackage{a4wide}
+
+% As an alternative to vmargin, anysize can be used. Vmargin gives a lot of options, but is also harder to configure. Vmargin support layout for double-paged publications. Actually, the Anysize-package is considered old and obsolete.
+% Options are: \marginsize{left}{right}{top}{bottom}
+\usepackage{anysize}
+   \marginsize{2.0cm}{2.5cm}{2.2cm}{3.2cm}
+
+
+%	***	Font options	***
+% All fonts include mathematical characters for equations, and support the danish letters æøåÆØÅ.
+% Documentation: http://www.tug.dk/FontCatalogue/mathfonts.html
+% Remove the comment sign to use a font.
+
+% Palatino
+%\usepackage{mathpazo}
+
+% Times
+%\usepackage{mathptmx}
+
+% Adobe Utopia
+%\usepackage[adobe-utopia]{mathdesign}
+
+% Arev	(Sans-Serif)
+%\usepackage{arev}
+
+
+%   ***   Fancyheaders:   ***
+%The Fancyheaders-package makes those fancy header and footer seen in a lot af LaTeX-documents.
+\usepackage{fancyhdr}								% Loads the package
+\pagestyle{fancy}								% Initialises layout options for the package
+	\fancyhead{}								% Vipes all header-fields
+	\fancyhead[L]{\mytitle}							% Typesets in upper left corner
+%	\fancyhead[C]{}								% Typesets in upper middle
+	\fancyhead[R]{\mysubtitle}						% Typesets in upper right corner
+	\headheight 14.5pt							% Sets the height of the header-field. ATTENTION: Might not work with the Vmargin-package
+	\fancyfoot{}								% Vipes all footer-fields
+%	\fancyfoot[L]{}								% Typesets in lower left corner
+	\fancyfoot[C]{Page \thepage{} of \pageref{LastPage}}			% Typesets in lower middle corner
+% 	\fancyfoot[C]{Side \thepage{} af \pageref{LastPage}}			% Typesets in lower middle corner
+%	\fancyfoot[R]{}								% Typesets in lower right corner
+	\renewcommand{\headrulewidth}{0.2pt}					% Set thickness of the headers line/ruler. Set to 0 (zero) to remove line/ruler.
+	\renewcommand{\footrulewidth}{0.0pt}					% Set thickness of the footers line/ruler. Set to 0 (zero) to remove line/ruler.
+
+
+\fancypagestyle{firstPageStyle}
+{
+   \fancyhead{}
+   \fancyfoot{}
+   \headheight 0pt
+   \renewcommand{\headrulewidth}{0.0pt}
+   \fancyfoot[C]{Page \thepage{} of \pageref{LastPage}}
+}
+
+
+%   ***   Physics Formatting   ***
+% Activete here (bold, non-italicized unit vectors) or under the *** Mathematical Formatting ***
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand{\vecc}[2]{\left(\begin{array}{c} #1 \\ #2 \end{array}\right)}
+\newcommand{\veccc}[3]{\left(\begin{array}{c} #1 \\ #2 \\ #3 \end{array}\right)}
+\newcommand{\I}{\mathbf{\widehat{i}}}
+\newcommand{\J}{\mathbf{\widehat{j}}}
+\newcommand{\K}{\mathbf{\widehat{k}}}
+\newcommand{\erho}{{$\widehat{\mathbf{e}}}_{\mathrm{\rho}$}}
+\newcommand{\ephi}{{$\widehat{\mathbf{e}}}_{$\mathrm{\Phi}$}}
+\newcommand{\ethe}{{$\widehat{\mathbf{e}}}_{$\mathrm{\theta}$}}
+\newcommand{\ez}{${{\widehat{\mathbf{e}}}_{z}}$}
+\newcommand{\er}{${{\widehat{\mathbf{e}}}_{r}}$}
+\newcommand{\es}{${{\widehat{\mathbf{e}}}_{s}}$}
+
+%   ***   Mathematical Formatting   ***
+% Activete here (slender, italicized unit vectors) or under the *** Physics formatting ***
+%\newcommand{\I}{\mathrm{\widehat{i}}}
+%\newcommand{\J}{\mathrm{\widehat{j}}}
+%\newcommand{\K}{\mathrm{\widehat{k}}}
+%\newcommand{\erho}{\mathrm{\widehat{e_{\rho}}}}
+%\newcommand{\ephi}{\mathrm{\widehat{e_{\Phi}}}}
+%\newcommand{\ez}{\mathrm{\widehat{e_{z}}}}
+%\newcommand{\er}{\mathrm{\widehat{e_{r}}}}
+%\newcommand{\es}{\mathrm{\widehat{e_{s}}}}
+
+
+
+
+%%%%%%%%%%%%%%%%%% ADDITIONAL PACKAGES %%%%%%%%%%%%%%%%%%
+% Greatly improves on PDFLaTeX's typesetting
+\usepackage{microtype}
+
+% Enables you to typeset colored text in a document, and change of background color of the page. Documentation: https://secure.wikimedia.org/wikibooks/en/wiki/LaTeX/Colors
+\usepackage[]{color}
+
+% % This package allows for customisation of the equation-numbers (that's what it is used for here), and much much more. Documentation: http://www.ctan.org/tex-archive/macros/latex/contrib/mh/mathtools.pdf
+% \usepackage{mathtools}
+% 	\newtagform{lilleskrift}[]{\footnotesize(}{)}			% Defines the new size of tags
+% 	\usetagform{lilleskrift}					% Initialize the new tag size defined above
+%  	\mathtoolsset{showonlyrefs}					% Hides numbers on all equations with no refferences.
+
+% Make it possible to color selected rows of a table, og to set up a color-pattern for the table.
+% Documentation: http://en.wikibooks.org/wiki/LaTeX/Tables#Alternate_Row_Colors_in_Tables
+\usepackage[table]{xcolor}
+
+% Degrees-symbol & Euro-symbol: \textcel & \texteuro
+\usepackage{textcomp}
+
+% For making custom enumarations. Examples (bottom of page): http://www.f.kth.se/~ante/latex.php
+\usepackage{enumerate}
+
+% Ensures that the TOC is not present in the TOC, and that the list of litterature is included in the TOC.
+\usepackage[nottoc]{tocbibind}
+
+% Makes the TOC "clickable" and more. Documentation: https://secure.wikimedia.org/wikibooks/en/wiki/LaTeX/Hyperlinks#Customization
+\usepackage[colorlinks=true,linkcolor=black,urlcolor=cyan]{hyperref}
+
+% Alternative to Verbatim-enviroment -- and smarter. Example:https://texblog.wordpress.com/2008/04/02/include-source-code-in-latex-with-listings/ . Docuentation: http://www.ctan.org/tex-archive/macros/latex/contrib/listings/listings.pdf (58 pages).
+\usepackage{listings}
+% \lstset{numbers=left, stepnumber=5, language=Matlab, tabsize=6} % Custom settings for the enviroments.
+\lstset{
+  % language=C,                                       % the language of the code
+  basicstyle=\footnotesize\ttfamily,                % the size of the fonts that are used for the code
+  numbers=left,                                     % where to put the line-numbers
+  numberstyle=\tiny\color{gray},                    % the style that is used for the line-numbers
+  stepnumber=1,                                     % the step between two line-numbers. If it's 1, each line will be numbered
+  numbersep=10pt,                                   % how far the line-numbers are from the code
+  backgroundcolor=\color{white},                    % choose the background color. You must add \usepackage{color}
+  showspaces=false,                                 % show spaces adding particular underscores
+  showstringspaces=false,                           % underline spaces within strings
+  showtabs=false,                                   % show tabs within strings adding particular underscores
+  frame=none,                                       % adds a frame around the code
+  % rulecolor=\color{black},                          % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  tabsize=4,                                        % sets default tabsize
+  captionpos=b,                                     % sets the caption-position to bottom
+  breaklines=true,                                  % sets automatic line breaking
+  breakatwhitespace=true,                           % sets if automatic breaks should only happen at whitespace
+  title=\lstname,                                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+  keywordstyle=\color{BrickRed},                    % keyword style
+  commentstyle=\color{JungleGreen},                 % comment style
+  % stringstyle=\color{ForestGreen},                % string literal style
+  % escapeinside={\%*}{*)},                         % if you want to add LaTeX within your code
+  % morekeywords={COMPONENT,AT,ROTATED,RELATIVE},     % if you want to add more keywords to the set
+}
+
+
+
+% For creating enviroment with multiple colums. Note that figures is only supported in the \begin{figure*} -mode (*-mode), and they er stretched over all colulms. Initiated as: \begin{multicols} ... \end{multicols} . Documentation: http://www.ctan.org/tex-archive/macros/latex/required/tools/multicol.pdf
+\usepackage{multicol}
+
+% Enables the "pspicture"-enviroment, containing psTricks-code (is rendered into a graphic). LaTeXdraw can generate the needed code: http://latexdraw.sourceforge.net/
+%\usepackage{pstricks,pst-grad,pst-coil,pst-node,pst-circ}
+
+% Allows printing of "nice" fractions like ½, a style often used when typesetting units. use as \nicefrac{1}{2} for typesetting ½ inside a mat enviroment.
+\usepackage[nice]{nicefrac}
+
+% Makes it possible to give the optional placeholder argument "H" for floats, forcing the float to be inserted immediately. This might create "holes" in the text!
+\usepackage{float}
+
+% Makes it possible to issue the command "\FloatBarrier" , "flushing" all floats in the buffer to the document. It does not create a new page like the "\clearpage". Also, the "[section]"-option ensures that floats is confined the the section where the insersion-code was issued (or right above or below - remove the "[above]" or "[below]" oprtions not allow this behavior).
+\usepackage[section,above,below]{placeins}
+
+% Typeset better tables, with proper vertical spacing, ofr instance. Documentation: http://mirrors.med.harvard.edu/ctan/macros/latex/contrib/booktabs/booktabs.pdf and http://en.wikibooks.org/wiki/LaTeX/Tables#Professional_tables
+\usepackage{booktabs}
+
+% Color individual rows in the booktabs enviroment. Docuentation: http://ftp.math.purdue.edu/mirrors/ctan.org/macros/latex/contrib/colortbl/colortbl.pdf
+\usepackage{colortbl}
+
+% Lets one row expand over multiple colulms. Documentation: https://secure.wikimedia.org/wikibooks/en/wiki/LaTeX/Tables#Spanning
+\usepackage{multirow}
+
+% Allows custom formatting of the caption-text of floats. Documentation: http://mirrors.dotsrc.org/ctan/macros/latex/contrib/caption/caption-eng.pdf
+\usepackage[labelfont=bf, font=small, justification=centerlast, margin=15pt, parskip=0pt]{caption}
+\setlength{\abovecaptionskip}{-1ex}
+% \setlength{\belowcaptionskip}{1ex}
+
+% For printing figures and tables side by side: http://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions#Subfloats
+\usepackage{subcaption}
+
+% Multiple styles for underlining. Option makes \emph and \em behave nomrally. Documentation: ftp://www.ctan.org/tex-archive/macros/latex/contrib/ulem/ulem.pdf
+\usepackage[normalem]{ulem}
+
+% Make cool'n fancy boxes is LaTeX. Documentation: http://www.ctan.org/pub/tex-archive/macros/latex/contrib/fancybox/fancybox-doc.pdf
+\usepackage{fancybox}
+
+% For typesetting units, for instance 50 N is typeset as \SI{50}{N}
+\usepackage{siunitx}
+\sisetup{
+%	list-final-separator = {\translate{og} },
+%	range-phrase = { \translate{til} },
+	separate-uncertainty = true,
+	multi-part-units = single,
+	range-units = single,
+	group-decimal-digits = false,
+	exponent-product = \cdot,
+	per-mode = fraction
+}
+
+% Convert EPS to PDF before compiling with PDFLATEX. Allows insertion of EPS-graphics.
+\usepackage{epstopdf}
+
+% By default, the package will generate a bit over one page, paragraph 1-7, using \lipsum or \lipsum[3-56] for multiple paragraphs.
+\usepackage{lipsum}
+
+%%%%%%%%%%%%%%%%%% USER DEFINED COMMANDS %%%%%%%%%%%%%%%%%%
+% Double underline
+\newcommand{\dul}[1]{\underline{\underline{#1}}}
+
+% Typesets a upright d. Intended for use in integrals like $ \int 2x dx $, which should be written as $ \int 2x \di x $. A little white space is added in front of the "d".
+\newcommand{\di}{\; \mathrm{d}}
+
+% Write "\p" instead of "\partial". Also, it adds a little white space in front of the "partial"-symbol.
+\newcommand{\p}{\; \partial}
+
+% Typesets a "d/d"-fraction, with optional arguments (placed behind the "d"'s in the nominator and denominator). Use as \dd{y}{x} for a "dy/dx"-fraction.
+\newcommand{\dd}[2]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
+
+% Typesets a "\partial/\partial"-fraction, with optional arguments (placed behind the "\partial"'s in the nominator and denominator). Use as \pd{y}{x} for a "\partial y / \partial x"-fraction.
+\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
+
+% A short, quicj way of inserting a 0.8 cm blank vertical space.
+\newcommand{\vsp}{\vspace{0.8cm}}
+
+% Typeset a non-italicized e in math enviroments, argument being the exponent. To typeset $ e^{x+y} $, use $ \e^{x+y} $, and the e wont be italicized.
+\newcommand{\e}[1]{\mathrm{e}^{#1}}
+
+% A shorthand version of the "\begin{align*}" and "\end{align*}" -commands. Use as \ba and \ea. For an example of the align-enviroment: http://www.personal.ceu.hu/tex/cookbook.html
+\newcommand{\ba}{\begin{align*}}
+\newcommand{\ea}{\end{align*}}
+
+% An event shorter version of the align-enviroment, only requireing one command to be issued, to create an "align"-enviroment. Use like $ \al{ a + b &= c \\ b &= c - a} $. You may enter a linebreak after the "\\"-command if you like - probably a good idea for longer systems of equations. If you break the enviroment over several lines, you may as well use tabulators to make the code look somewhat like the expected output.
+\newcommand{\al}[1]{\begin{align*} #1 \end{align*}}
+
+% Redefines the "\eqref"-command, ensuring parenthesis is automatically added to the number when referenced with the "\eqref"-command.
+\renewcommand{\eqref}[1]{(\ref{#1})}
+
+% Makes it easy to reference to something severel pages away. Otherwise, it works as the "\ref"-command.
+\newcommand{\fullref}[1]{\ref{#1} på side~\pageref{#1}}
+
+% Lats you write an averaged function "<f(x)>" as $ \avg{f(x)} $
+\newcommand{\avgg}[1]{\left\langle #1 \right\rangle}
+
+% Enables you to write something in a power of 10 as $ \E{n} $ instead of $ \cdot 10^{n} $. Also adds a little negative spacing on each side og the \cdot.
+\newcommand{\E}[1]{\! \cdot \! 10^{#1}}
+
+% Shrinks the size of the argument, and puts it in math-enviroment. Well suited for small inline arrays.
+\newcommand{\vecsm}[1]{\mbox{\footnotesize ${#1}$ }}
+
+%	*** New Enviroments ***
+\definecolor{MyGray}{rgb}{0.83,0.83,0.83}			% Define the color used as a background color
+\setlength{\fboxrule}{0.5pt}					% Define the width of a borden -- only relevant if the "\fbox"-command uncommentet.
+\newcommand{\graybox}[1]{\vspace*{-0.2cm}			% Enviroment activatet as \graybox{  }, the contents of the box between the curly brackes. Contents may be broken into severel lines.
+                       \begin{center}
+                        \colorbox{MyGray}{
+                         %\fbox{
+                          \begin{minipage}[t]{0.97\textwidth}
+                            {\small #1 }
+                          \end{minipage}
+                         %}
+                        }
+                       \end{center}  }
+
+
+
+
+%%%%%%%%%%%%%%%%%% DOCUMENTPART BEGIN %%%%%%%%%%%%%%%%%%
+\makeindex
+

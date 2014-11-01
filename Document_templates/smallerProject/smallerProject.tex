@@ -1,0 +1,174 @@
+% # -*- coding: utf8 -*-
+
+%%%%%%%%%%%%%%%%%% ESSENTIAL FORMATTING %%%%%%%%%%%%%%%%%%
+% \documentclass[a4paper,11pt,notitlepage]{report}
+\documentclass[a4paper,11pt]{report}
+% \documentclass[a4paper,11pt]{scrartcl}
+
+% If activated, labels will be shown in the margin. Use only when in draft mode.
+%\usepackage[notref,notcite]{showkeys}
+
+%%%%%%%%%%%%%%%%%% FOR DANISH DOCUMENTS %%%%%%%%%%%%%%%%%%
+% Chapters is given danish names and so on.
+\usepackage[english]{babel}
+% For use on Unix systems (Mac/Linux). Use this or the one below.
+\usepackage[utf8]{inputenc}
+% Makes commas work as decimal-points (fixes the spacing around .'s).
+\usepackage{icomma}
+
+%%%%%%%%%%%%%%%%%% ESSENTIAL PACKAGES %%%%%%%%%%%%%%%%%%
+% Better mathematics ;-)
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+% \makeindex generates index, required for the TOC. Remember to compile two times to ensure that all changes and reffrences have been updated properly!
+\usepackage{makeidx}
+% Typesets the pagenumber of the last page by entering \pageref{Lastpage}
+\usepackage{lastpage}
+% Include external graphics files. Note for scaling graphics: for scaling the graphic to, for instance, 45 % of the pagewidth, the command "\includegraphics[width=0.55\textwidth]{./imagefile.png}" may be used (\linewidth also work - espicially useful when working in a multicolulm-document, NOT created be the multicol-package). Documentation: https://secure.wikimedia.org/wikibooks/en/wiki/LaTeX/Importing_Graphics#Including_graphics
+\usepackage{graphicx}
+
+%%%%%%%%%%%%%%%%%% ADDITIONAL FORMATTING %%%%%%%%%%%%%%%%%%
+% Adds space between lines. The default linespace is multiplied by the argument ( decimal nuber -- use . instead of , ).
+% \linespread{1.15}
+% Sets the indentation for new paragraphs. Per default LaTeX creates some indentation whenever a new paragraph begins. While this might look visually pleasing, it's an english/american convention, and not "correct" danish typestting.
+% \parindent=0pt
+% Overfull hbox under 3pt ignoreres - makes LaTeX a but less fussy, but might also make things look a little bit less pleasing to the eye.
+\hfuzz=3pt
+% Sets the maximal "depth" of the TOC to 3.
+\setcounter{tocdepth}{3}
+% Sets the depth of numbered 3, the default value is 2.
+\setcounter{secnumdepth}{2}
+% Sets rules for equation numbering to follow a section or subsection ( replace the "section" -argument with subsection ). Default values set gives equation 3 in section 1 the number (tag) (1.3). Docuentation: http://en.wikibooks.org/wiki/LaTeX/Tips_and_Tricks#Grouping_Figure.2FEquation_Numbering_by_Section
+\numberwithin{equation}{section}
+% Makes page margins narrower than usual.
+%\usepackage{a4wide}
+% Set margins on page
+% Options are: \marginsize{left}{right}{top}{bottom}
+\usepackage{anysize}
+	\marginsize{2.0cm}{2.5cm}{2.2cm}{3.2cm}
+%   ***   Fancyheaders:   ***
+%The Fancyheaders-package makes those fancy header and footer seen in a lot af LaTeX-documents.
+\usepackage{fancyhdr}											% Loads the package
+\pagestyle{fancy}												% Initialises layout options for the package
+	\fancyhead{}												% Vipes all header-fields
+	\fancyhead[L]{}												% Typesets in upper left corner
+%	\fancyhead[C]{}												% Typesets in upper middle
+	\fancyhead[R]{}												% Typesets in upper right corner
+	\headheight 14.5pt											% Sets the height of the header-field. ATTENTION: Might not work with the Vmargin-package
+	\fancyfoot{}												% Vipes all footer-fields
+%	\fancyfoot[L]{}												% Typesets in lower left corner
+	% \fancyfoot[C]{\reflectbox{$\sim$} \thepage{} $\sim$}		% Typesets in lower middle corner
+	\fancyfoot[C]{Page \thepage{} of \pageref{LastPage}}		% Typesets in lower middle corner
+%	\fancyfoot[R]{}												% Typesets in lower right corner
+	\renewcommand{\headrulewidth}{0.2pt}						% Set thickness of the headers line/ruler. Set to 0 (zero) to remove line/ruler.
+	\renewcommand{\footrulewidth}{0.0pt}						% Set thickness of the footers line/ruler. Set to 0 (zero) to remove line/ruler.
+
+\fancypagestyle{firstPageStyle}
+{
+   \fancyhead{}
+   \fancyfoot{}
+   \headheight 0pt
+   \renewcommand{\headrulewidth}{0.0pt}
+   \fancyfoot[C]{Page \thepage{} of \pageref{LastPage}}
+}
+
+%   ***   Physics Formatting   ***
+% Activete here (bold, non-italicized unit vectors) or under the *** Mathematical Formatting ***
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand{\vecc}[2]{\left(\begin{array}{c} #1 \\ #2 \end{array}\right)}
+\newcommand{\veccc}[3]{\left(\begin{array}{c} #1 \\ #2 \\ #3 \end{array}\right)}
+\newcommand{\I}{\mathbf{\widehat{i}}}
+\newcommand{\J}{\mathbf{\widehat{j}}}
+\newcommand{\K}{\mathbf{\widehat{k}}}
+
+%%%%%%%%%%%%%%%%%% ADDITIONAL PACKAGES %%%%%%%%%%%%%%%%%%
+% Greatly improves on PDFLaTeX's typesetting
+\usepackage{microtype}
+% Enables you to typeset colored text in a document, and change of background color of the page. Documentation: https://secure.wikimedia.org/wikibooks/en/wiki/LaTeX/Colors
+\usepackage[]{color}
+% Makes the TOC "clickable" and more. Documentation: https://secure.wikimedia.org/wikibooks/en/wiki/LaTeX/Hyperlinks#Customization
+\usepackage[colorlinks=true,linkcolor=black,urlcolor=cyan]{hyperref}
+% Alternative to Verbatim-enviroment -- and smarter. Example:https://texblog.wordpress.com/2008/04/02/include-source-code-in-latex-with-listings/ . Docuentation: http://www.ctan.org/tex-archive/macros/latex/contrib/listings/listings.pdf (58 pages).
+\usepackage{listings}
+\lstset{numbers=left, stepnumber=5, language=Matlab, tabsize=6} % Custom settings for the enviroments.
+% Allows printing of "nice" fractions like ½, a style often used when typesetting units. use as \nicefrac{1}{2} for typesetting ½ inside a math enviroment.
+\usepackage[nice]{nicefrac}
+% Makes it possible to give the optional placeholder argument "H" for floats, forcing the float to be inserted immediately. This might create "holes" in the text!
+\usepackage{float}
+% Makes it possible to issue the command "\FloatBarrier" , "flushing" all floats in the buffer to the document. It does not create a new page like the "\clearpage". Also, the "[section]"-option ensures that floats is confined the the section where the insersion-code was issued (or right above or below - remove the "[above]" or "[below]" oprtions not allow this behavior).
+\usepackage[section,above,below]{placeins}
+% Typeset better tables, with proper vertical spacing, ofr instance. Documentation: http://mirrors.med.harvard.edu/ctan/macros/latex/contrib/booktabs/booktabs.pdf and http://en.wikibooks.org/wiki/LaTeX/Tables#Professional_tables
+\usepackage{booktabs}
+% For typesetting units, for instance 50 N is typeset as \SI{50}{N}
+\usepackage{siunitx}
+\sisetup{
+%	list-final-separator = {\translate{og} },
+%	range-phrase = { \translate{til} },
+	separate-uncertainty = true,
+	multi-part-units = single,
+	range-units = single,
+	group-decimal-digits = false,
+	exponent-product = \cdot,
+	per-mode = fraction
+}
+% Convert EPS to PDF before compiling with PDFLATEX. Allows insertion of EPS-graphics.
+\usepackage{epstopdf}
+% Modifying the captions of graphics. Might mean trouble in some enviroments
+\usepackage[labelfont=bf, font=small, justification=centerlast, margin=15pt, parskip=0pt, format=plain]{caption}
+% For printing figures and tables side by side: http://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions#Subfloats
+\setlength{\abovecaptionskip}{-1ex}
+% \setlength{\belowcaptionskip}{1ex}
+\usepackage{subcaption}
+% By default, the package will generate a bit over one page, paragraph 1-7, using \lipsum or \lipsum[3-56] for multiple paragraphs.
+\usepackage{lipsum}
+%%%%%%%%%%%%%%%%%% USER DEFINED COMMANDS %%%%%%%%%%%%%%%%%%
+% Typesets a upright d. Intended for use in integrals like $ \int 2x dx $, which should be written as $ \int 2x \di x $. A little white space is added in front of the "d".
+\newcommand{\di}{\; \mathrm{d}}
+% Write "\p" instead of "\partial". Also, it adds a little white space in front of the "partial"-symbol.
+\newcommand{\p}{\; \partial}
+% Typesets a "d/d"-fraction, with optional arguments (placed behind the "d"'s in the nominator and denominator). Use as \dd{y}{x} for a "dy/dx"-fraction.
+\newcommand{\dd}[2]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
+% Typesets a "\partial/\partial"-fraction, with optional arguments (placed behind the "\partial"'s in the nominator and denominator). Use as \pd{y}{x} for a "\partial y / \partial x"-fraction.
+\newcommand{\pp}[2]{\frac{\partial #1}{\partial #2}}
+% A quick way of inserting a 0.8 cm blank vertical space.
+\newcommand{\vsp}{\vspace{0.8cm}}
+% Typeset a non-italicized e in math enviroments, argument being the exponent. To typeset $ e^{x+y} $, use $ \e^{x+y} $, and the e wont be italicized.
+\newcommand{\e}[1]{\mathrm{e}^{#1}}
+% A shorthand version of the "\begin{align*}" and "\end{align*}" -commands. Use as \ba and \ea. For an example of the align-enviroment: http://www.personal.ceu.hu/tex/cookbook.html
+\newcommand{\ba}{\begin{align*}}
+\newcommand{\ea}{\end{align*}}
+% Makes it easy to reference to something severel pages away. Otherwise, it works as the "\ref"-command.
+\newcommand{\fullref}[1]{\ref{#1} på side~\pageref{#1}}
+% Lats you write an averaged function "<f(x)>" as $ \avg{f(x)} $
+\newcommand{\avg}[1]{\left\langle #1 \right\rangle}
+% Enables you to write something in a power of 10 as $ \E{n} $ instead of $ \cdot 10^{n} $. Also adds a little negative spacing on each side og the \cdot.
+\newcommand{\E}[1]{\! \cdot \! 10^{#1}}
+% Redefines the "\eqref"-command, ensuring parenthesis is automatically added to the number when referenced with the "\eqref"-command.
+\renewcommand{\eqref}[1]{(\ref{#1})}
+
+%%%%%%%%%%%%%%%%%% DOCUMENTPART BEGIN %%%%%%%%%%%%%%%%%%
+\makeindex
+\begin{document}
+\pagestyle{fancy}
+\thispagestyle{firstPageStyle}
+\hyphenation{fortran super-ledene}
+\selectlanguage{english}
+\title{Titel}
+\author{Allan L. R. Hansen}
+\date{\today}
+\maketitle  %Print the title and author information
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

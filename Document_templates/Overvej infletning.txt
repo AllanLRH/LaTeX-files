@@ -1,0 +1,45 @@
+\newcommand{\rif}{\rightarrow \infty}
+\newcommand{\rw}{\rightarrow}
+
+
+Hvis du tilføjer \usepackage{ulem} til præamblen og skriver \uuline{A}, så giver det et dobbelt-understreget A.
+
+
+
+
+
+*****   Fra Forum   *****
+
+
+
+Spørgsmål:
+
+Hvordan laver man "omvendte"  \ddots? Så de kan være i den modsatte diagonal ligesom i opg 3.1.a.
+	
+
+
+Svar:
+
+Der er sikkert forskellige måder at gøre det på, men en mulighed er at tilføje
+
+\usepackage{yhmath}
+
+og så får du dine prikker med kommandoen
+
+\adots
+
+
+
+
+http://www.ctan.org/tex-archive/macros/latex/contrib/pstool/
+
+
+
+
+
+
+
+
+\usepackage{AnonymousPro}
+
+
