@@ -14,13 +14,13 @@
 %%%%%%%%%%%%%%%%%% FOR DANISH DOCUMENTS %%%%%%%%%%%%%%%%%%
 
 % Chapters is given danish names and so on.
-\usepackage[danish]{babel}
+\usepackage[english]{babel}
 
 % For use on Unix systems (Mac/Linux). Use this or the one below.
 \usepackage[utf8]{inputenc}
 
 % Makes commas work as decimal-points (fixes the spacing around.
-\usepackage{icomma}
+% \usepackage{icomma}
 
 % For use on Windows systems. Use this or the one above.
 % \usepackage[T1]{fontenc}
@@ -46,10 +46,10 @@
 
 %%%%%%%%%%%%%%%%%% ADDITIONAL FORMATTING %%%%%%%%%%%%%%%%%%
 % Defines a new command to make sure the document title are spelled in the same way throughout the document. Use \mytitle when referring to the title.
-\newcommand{\mytitle}{  }
+\newcommand{\mytitle}{ Your title }
 
 % Defines a new command to make sure all document subtitle are the same throughout the document. Use \mysubtitle when referring to the documents subtitle. If left empty it will appear as if no subtitle was there (it will not use 'empty' space).
-\newcommand{\mysubtitle}{  }
+\newcommand{\mysubtitle}{ Your subtitle }
 
 %Sets the "global date" of the document.You may choose whatever date you want. In case you don't want to display a date you can just leave it blank and it will have no effect on the lay-out. Sets the dato to "todays date" by default.
 \newcommand{\mydate}{\today}
@@ -65,6 +65,13 @@
 
 % Sets the maximal "depth" of the TOC to 3.
 \setcounter{tocdepth}{3}
+
+% Use Asteriks, dagger, ddagger... for footnotes
+\renewcommand*{\thefootnote}{\fnsymbol{footnote}}
+
+% Start counting from 1, because we don't want the first page after the front page 1.
+\setcounter{page}{0}
+\setcounter{section}{0}
 
 % Sets the depth of numbered 3, the default value is 2.
 \setcounter{secnumdepth}{2}
@@ -119,7 +126,7 @@
 %\usepackage{mathptmx}
 
 % Adobe Utopia
-%\usepackage[adobe-utopia]{mathdesign}
+\usepackage[adobe-utopia]{mathdesign}
 
 % Arev	(Sans-Serif)
 %\usepackage{arev}
@@ -127,22 +134,22 @@
 
 %   ***   Fancyheaders:   ***
 %The Fancyheaders-package makes those fancy header and footer seen in a lot af LaTeX-documents.
-\usepackage{fancyhdr}								% Loads the package
-\pagestyle{fancy}								% Initialises layout options for the package
-	\fancyhead{}								% Vipes all header-fields
-	\fancyhead[L]{\mytitle}							% Typesets in upper left corner
-%	\fancyhead[C]{}								% Typesets in upper middle
-	\fancyhead[R]{\mysubtitle}						% Typesets in upper right corner
-	\headheight 14.5pt							% Sets the height of the header-field. ATTENTION: Might not work with the Vmargin-package
-	\fancyfoot{}								% Vipes all footer-fields
-%	\fancyfoot[L]{}								% Typesets in lower left corner
-	\fancyfoot[C]{Page \thepage{} of \pageref{LastPage}}			% Typesets in lower middle corner
-% 	\fancyfoot[C]{Side \thepage{} af \pageref{LastPage}}			% Typesets in lower middle corner
-%	\fancyfoot[R]{}								% Typesets in lower right corner
-	\renewcommand{\headrulewidth}{0.2pt}					% Set thickness of the headers line/ruler. Set to 0 (zero) to remove line/ruler.
-	\renewcommand{\footrulewidth}{0.0pt}					% Set thickness of the footers line/ruler. Set to 0 (zero) to remove line/ruler.
+\usepackage{fancyhdr}								                             % Loads the package
+\pagestyle{fancy}							                                   % Initialises layout options for the package
+\fancyhead{}                                                     % Vipes all header-fields
+\fancyhead[L]{\mytitle}                                          % Typesets in upper left corner
+% \fancyhead[C]{}                                                % Typesets in upper middle
+\fancyhead[R]{\mysubtitl      e}                                 % Typesets in upper right corner
+\headheight 14.5pt                                               % Sets the height of the header-field. ATTENTION: Might not work with the Vmargin-package
+\fancyfoot{}                                                     % Vipes all footer-fields
+% \fancyfoot[L]{}                                                % Typesets in lower left corner
+\fancyfoot[C]{Page \thepage{} of \pageref{LastPage}}             % Typesets in lower middle corner
+% \fancyfoot[C]{Side \thepage{} af \pageref{LastPage}}           % Typesets in lower middle corner
+% \fancyfoot[R]{}                                                % Typesets in lower right corner
+\renewcommand{\headrulewidth}{0.2pt}                             % Set thickness of the headers line/ruler. Set to 0 (zero) to remove line/ruler.
+\renewcommand{\footrulewidth}{0.0pt}                             % Set thickness of the footers line/ruler. Set to 0 (zero) to remove line/ruler.
 
-
+% Ensures that first page (front page) have a clean header
 \fancypagestyle{firstPageStyle}
 {
    \fancyhead{}
@@ -168,6 +175,7 @@
 \newcommand{\er}{${{\widehat{\mathbf{e}}}_{r}}$}
 \newcommand{\es}{${{\widehat{\mathbf{e}}}_{s}}$}
 
+
 %   ***   Mathematical Formatting   ***
 % Activete here (slender, italicized unit vectors) or under the *** Physics formatting ***
 %\newcommand{\I}{\mathrm{\widehat{i}}}
@@ -180,6 +188,13 @@
 %\newcommand{\es}{\mathrm{\widehat{e_{s}}}}
 
 
+
+% Some math operators (like \sin, \cos...)
+\DeclareMathOperator*{\sinc}{sinc}  % Sinc = sin(x)/x function
+\DeclareMathOperator*{\fft}{fft \,}  % Fourier Transform
+\DeclareMathOperator*{\ifft}{ifft \,}  % Inverse Fourier Transform
+\DeclareMathOperator*{\Tr}{Tr \,}  % Matrix trace
+\newcommand{\T}{^{\mathrm{T}}}  % Matrix transpose
 
 
 %%%%%%%%%%%%%%%%%% ADDITIONAL PACKAGES %%%%%%%%%%%%%%%%%%
@@ -197,7 +212,11 @@
 
 % Make it possible to color selected rows of a table, og to set up a color-pattern for the table.
 % Documentation: http://en.wikibooks.org/wiki/LaTeX/Tables#Alternate_Row_Colors_in_Tables
-\usepackage[table]{xcolor}
+\usepackage[table,dvipsnames]{xcolor}
+
+% Inline enumerations http://en.wikibooks.org/wiki/LaTeX/List_Structures#With_package_paralist
+% Official documentation: http://mirrors.ctan.org/macros/latex/contrib/paralist/paralist.pdf
+\usepackage{paralist}
 
 % Degrees-symbol & Euro-symbol: \textcel & \texteuro
 \usepackage{textcomp}
@@ -239,10 +258,18 @@
   % morekeywords={COMPONENT,AT,ROTATED,RELATIVE},     % if you want to add more keywords to the set
 }
 
+% Easyier listing of source code using the listings package.
+% Syntax:
+%         \lstfile{A descriptive caption}{lst:listingLabel}{path/to/file.ext}
+\newcommand{\lstfile}[3]{\begin{minipage}{\textwidth}
+\lstinputlisting[caption={#1}, label=#2]{#3}
+\end{minipage}}
 
 
 % For creating enviroment with multiple colums. Note that figures is only supported in the \begin{figure*} -mode (*-mode), and they er stretched over all colulms. Initiated as: \begin{multicols} ... \end{multicols} . Documentation: http://www.ctan.org/tex-archive/macros/latex/required/tools/multicol.pdf
+% Example: http://en.wikibooks.org/wiki/LaTeX/Page_Layout#Multi-column_pages
 \usepackage{multicol}
+\setlength{\columnsep}{0.9cm}
 
 % Enables the "pspicture"-enviroment, containing psTricks-code (is rendered into a graphic). LaTeXdraw can generate the needed code: http://latexdraw.sourceforge.net/
 %\usepackage{pstricks,pst-grad,pst-coil,pst-node,pst-circ}
@@ -291,6 +318,8 @@
 	exponent-product = \cdot,
 	per-mode = fraction
 }
+% Declare unit px for pixel. Used with the siunitx package
+\DeclareSIUnit{\pixels}{px}
 
 % Convert EPS to PDF before compiling with PDFLATEX. Allows insertion of EPS-graphics.
 \usepackage{epstopdf}
@@ -299,6 +328,15 @@
 \usepackage{lipsum}
 
 %%%%%%%%%%%%%%%%%% USER DEFINED COMMANDS %%%%%%%%%%%%%%%%%%
+% Some math operators (like \sin, \cos...)
+\DeclareMathOperator*{\sinc}{sinc}  % Sinc = sin(x)/x function
+\DeclareMathOperator*{\fft}{fft \,}  % Fourier Transform
+\DeclareMathOperator*{\ifft}{ifft \,}  % Inverse Fourier Transform
+\DeclareMathOperator*{\Tr}{Tr \,}  % Matrix trace
+
+% Matrix transpose
+\newcommand{\T}{^{\mathrm{T}}}
+
 % Double underline
 \newcommand{\dul}[1]{\underline{\underline{#1}}}
 
@@ -336,9 +374,6 @@
 % Lats you write an averaged function "<f(x)>" as $ \avg{f(x)} $
 \newcommand{\avgg}[1]{\left\langle #1 \right\rangle}
 
-% Enables you to write something in a power of 10 as $ \E{n} $ instead of $ \cdot 10^{n} $. Also adds a little negative spacing on each side og the \cdot.
-\newcommand{\E}[1]{\! \cdot \! 10^{#1}}
-
 % Shrinks the size of the argument, and puts it in math-enviroment. Well suited for small inline arrays.
 \newcommand{\vecsm}[1]{\mbox{\footnotesize ${#1}$ }}
 
@@ -357,8 +392,5 @@
                        \end{center}  }
 
 
-
-
 %%%%%%%%%%%%%%%%%% DOCUMENTPART BEGIN %%%%%%%%%%%%%%%%%%
 \makeindex
-
