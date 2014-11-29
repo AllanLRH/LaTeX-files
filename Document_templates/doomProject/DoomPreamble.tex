@@ -4,7 +4,6 @@
 
 %%%%%%%%%%%%%%%%%% ESSENTIAL FORMATTING %%%%%%%%%%%%%%%%%%
 % \documentclass[a4paper,11pt,notitlepage]{report}
-% \documentclass[a4paper,11pt]{report}
 \documentclass[a4paper,11pt]{scrartcl}
 % If activated, labels will be shown in the margin. Use only when in draft mode.
 %\usepackage[notref,notcite]{showkeys}
@@ -45,15 +44,6 @@
 
 
 %%%%%%%%%%%%%%%%%% ADDITIONAL FORMATTING %%%%%%%%%%%%%%%%%%
-% Defines a new command to make sure the document title are spelled in the same way throughout the document. Use \mytitle when referring to the title.
-\newcommand{\mytitle}{ Your title }
-
-% Defines a new command to make sure all document subtitle are the same throughout the document. Use \mysubtitle when referring to the documents subtitle. If left empty it will appear as if no subtitle was there (it will not use 'empty' space).
-\newcommand{\mysubtitle}{ Your subtitle }
-
-%Sets the "global date" of the document.You may choose whatever date you want. In case you don't want to display a date you can just leave it blank and it will have no effect on the lay-out. Sets the dato to "todays date" by default.
-\newcommand{\mydate}{\today}
-
 % Adds space between lines. The default linespace is multiplied by the argument ( decimal nuber -- use . instead of , ).
 % \linespread{1.15}
 
@@ -137,9 +127,9 @@
 \usepackage{fancyhdr}								                             % Loads the package
 \pagestyle{fancy}							                                   % Initialises layout options for the package
 \fancyhead{}                                                     % Vipes all header-fields
-\fancyhead[L]{\mytitle}                                          % Typesets in upper left corner
+\fancyhead[L]{My Title}                                          % Typesets in upper left corner
 % \fancyhead[C]{}                                                % Typesets in upper middle
-\fancyhead[R]{\mysubtitl      e}                                 % Typesets in upper right corner
+\fancyhead[R]{My Subtitle}                                       % Typesets in upper right corner
 \headheight 14.5pt                                               % Sets the height of the header-field. ATTENTION: Might not work with the Vmargin-package
 \fancyfoot{}                                                     % Vipes all footer-fields
 % \fancyfoot[L]{}                                                % Typesets in lower left corner
@@ -168,12 +158,13 @@
 \newcommand{\I}{\mathbf{\widehat{i}}}
 \newcommand{\J}{\mathbf{\widehat{j}}}
 \newcommand{\K}{\mathbf{\widehat{k}}}
-\newcommand{\erho}{{$\widehat{\mathbf{e}}}_{\mathrm{\rho}$}}
-\newcommand{\ephi}{{$\widehat{\mathbf{e}}}_{$\mathrm{\Phi}$}}
-\newcommand{\ethe}{{$\widehat{\mathbf{e}}}_{$\mathrm{\theta}$}}
-\newcommand{\ez}{${{\widehat{\mathbf{e}}}_{z}}$}
-\newcommand{\er}{${{\widehat{\mathbf{e}}}_{r}}$}
-\newcommand{\es}{${{\widehat{\mathbf{e}}}_{s}}$}
+\newcommand{\erho}{{\widehat{\mathbf{e}}}_{\mathrm{\rho}}}
+\newcommand{\ephi}{{\widehat{\mathbf{e}}}_{\mathrm{\Phi}}}
+\newcommand{\ethe}{{\widehat{\mathbf{e}}}_{\mathrm{\theta}}}
+\newcommand{\ez}{{{\widehat{\mathbf{e}}}_{z}}}
+\newcommand{\er}{{{\widehat{\mathbf{e}}}_{r}}}
+\newcommand{\es}{{{\widehat{\mathbf{e}}}_{s}}}
+\newcommand{\uvec}[1]{\mathbf{\widehat{#1}}}  % Unit vector
 
 
 %   ***   Mathematical Formatting   ***
@@ -300,11 +291,20 @@
 % For printing figures and tables side by side: http://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions#Subfloats
 \usepackage{subcaption}
 
+% Inline figures: http://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions#Wrapping_text_around_figures
+% Official documentation: http://mirrors.ctan.org/macros/latex/contrib/wrapfig/wrapfig-doc.pdf
+\usepackage{wrapfig}
+
 % Multiple styles for underlining. Option makes \emph and \em behave nomrally. Documentation: ftp://www.ctan.org/tex-archive/macros/latex/contrib/ulem/ulem.pdf
 \usepackage[normalem]{ulem}
 
 % Make cool'n fancy boxes is LaTeX. Documentation: http://www.ctan.org/pub/tex-archive/macros/latex/contrib/fancybox/fancybox-doc.pdf
 \usepackage{fancybox}
+
+% Make TODO-notes in boxes. Example:
+%                                    \todo{My todo note}
+% Documentation: http://www.tex.ac.uk/tex-archive/macros/latex/contrib/todonotes/todonotes.pdf
+\usepackage[english]{todonotes}
 
 % For typesetting units, for instance 50 N is typeset as \SI{50}{N}
 \usepackage{siunitx}
@@ -358,16 +358,6 @@
 % Typeset a non-italicized e in math enviroments, argument being the exponent. To typeset $ e^{x+y} $, use $ \e^{x+y} $, and the e wont be italicized.
 \newcommand{\e}[1]{\mathrm{e}^{#1}}
 
-% A shorthand version of the "\begin{align*}" and "\end{align*}" -commands. Use as \ba and \ea. For an example of the align-enviroment: http://www.personal.ceu.hu/tex/cookbook.html
-\newcommand{\ba}{\begin{align*}}
-\newcommand{\ea}{\end{align*}}
-
-% An event shorter version of the align-enviroment, only requireing one command to be issued, to create an "align"-enviroment. Use like $ \al{ a + b &= c \\ b &= c - a} $. You may enter a linebreak after the "\\"-command if you like - probably a good idea for longer systems of equations. If you break the enviroment over several lines, you may as well use tabulators to make the code look somewhat like the expected output.
-\newcommand{\al}[1]{\begin{align*} #1 \end{align*}}
-
-% Redefines the "\eqref"-command, ensuring parenthesis is automatically added to the number when referenced with the "\eqref"-command.
-\renewcommand{\eqref}[1]{(\ref{#1})}
-
 % Makes it easy to reference to something severel pages away. Otherwise, it works as the "\ref"-command.
 \newcommand{\fullref}[1]{\ref{#1} på side~\pageref{#1}}
 
@@ -394,3 +384,13 @@
 
 %%%%%%%%%%%%%%%%%% DOCUMENTPART BEGIN %%%%%%%%%%%%%%%%%%
 \makeindex
+
+
+
+
+
+
+
+
+
+
