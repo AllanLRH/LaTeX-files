@@ -237,13 +237,39 @@
 % Define the \email-function
 \DeclareUrlCommand\email{\urlstyle{rm}}
 
-% For creating enviroment with multiple colums. Note that figures is only supported in the \begin{figure*} -mode (*-mode), and they er stretched over all colulms. Initiated as: \begin{multicols} ... \end{multicols} . Documentation: http://www.ctan.org/tex-archive/macros/latex/required/tools/multicol.pdf
+% Include source code formatted by Pygments
+% Tutorial: https://www.sharelatex.com/learn/Code_Highlighting_with_minted
+%
+% Inline typesetting:
+%        \mint{html}|<h2>Something <b>here</b></h2>|
+%
+% Include file:
+%       \inputminted{octave}{BitXorMatrix.m}
+%
+%
+% \begin{minted} {python}
+% def sayHi(message=None):
+%     if message:
+%         print(message)
+%     else:
+%         print('Hi!')
+% \end{minted}
+%
+\usepackage
+[frame=lines,  % Draw lines over and under source code
+framesep=2mm,
+baselinestretch=1.2,
+fontsize=\footnotesize,
+linenos  % Show line numbers
+]{minted}
+
+% For creating enviroment with multiple colums.
+% Note that figures is only supported in the \begin{figure*} -mode (*-mode), and they are stretched over all columns.
+% Initiated as: \begin{multicols} ... \end{multicols}.
 % Example: http://en.wikibooks.org/wiki/LaTeX/Page_Layout#Multi-column_pages
+% Documentation: http://www.ctan.org/tex-archive/macros/latex/required/tools/multicol.pdf
 \usepackage{multicol}
 \setlength{\columnsep}{0.9cm}
-
-% Enables the "pspicture"-enviroment, containing psTricks-code (is rendered into a graphic). LaTeXdraw can generate the needed code: http://latexdraw.sourceforge.net/
-%\usepackage{pstricks,pst-grad,pst-coil,pst-node,pst-circ}
 
 % Allows printing of "nice" fractions like ½, a style often used when typesetting units. use as \nicefrac{1}{2} for typesetting ½ inside a mat enviroment.
 \usepackage[nice]{nicefrac}
@@ -251,19 +277,26 @@
 % Makes it possible to give the optional placeholder argument "H" for floats, forcing the float to be inserted immediately. This might create "holes" in the text!
 \usepackage{float}
 
-% Makes it possible to issue the command "\FloatBarrier" , "flushing" all floats in the buffer to the document. It does not create a new page like the "\clearpage". Also, the "[section]"-option ensures that floats is confined the the section where the insersion-code was issued (or right above or below - remove the "[above]" or "[below]" oprtions not allow this behavior).
+% Makes it possible to issue the command "\FloatBarrier" , "flushing" all floats in the buffer to the document.
+% It does not create a new page like the "\clearpage".
+% Also, the "[section]"-option ensures that floats is confined the the section where the insersion-code was issued (or right above or below - remove the "[above]" or "[below]" oprtions not allow this behavior).
 \usepackage[section,above,below]{placeins}
 
-% Typeset better tables, with proper vertical spacing, ofr instance. Documentation: http://mirrors.med.harvard.edu/ctan/macros/latex/contrib/booktabs/booktabs.pdf and http://en.wikibooks.org/wiki/LaTeX/Tables#Professional_tables
+% Typeset better tables, with proper vertical spacing, ofr instance.
+% Tutorial: http://en.wikibooks.org/wiki/LaTeX/Tables#Professional_tables
+% Documentation: http://mirrors.med.harvard.edu/ctan/macros/latex/contrib/booktabs/booktabs.pdf
 \usepackage{booktabs}
 
-% Color individual rows in the booktabs enviroment. Docuentation: http://ftp.math.purdue.edu/mirrors/ctan.org/macros/latex/contrib/colortbl/colortbl.pdf
+% Color individual rows in the booktabs enviroment.
+% Docuentation: http://ftp.math.purdue.edu/mirrors/ctan.org/macros/latex/contrib/colortbl/colortbl.pdf
 \usepackage{colortbl}
 
-% Lets one row expand over multiple colulms. Documentation: https://secure.wikimedia.org/wikibooks/en/wiki/LaTeX/Tables#Spanning
+% Lets one row expand over multiple colulms.
+% Documentation: https://secure.wikimedia.org/wikibooks/en/wiki/LaTeX/Tables#Spanning
 \usepackage{multirow}
 
-% Allows custom formatting of the caption-text of floats. Documentation: http://mirrors.dotsrc.org/ctan/macros/latex/contrib/caption/caption-eng.pdf
+% Allows custom formatting of the caption-text of floats.
+% Documentation: http://mirrors.dotsrc.org/ctan/macros/latex/contrib/caption/caption-eng.pdf
 \usepackage[labelfont=bf, font=small, justification=centerlast, margin=15pt, parskip=0pt]{caption}
 \setlength{\abovecaptionskip}{-1ex}
 % \setlength{\belowcaptionskip}{1ex}
@@ -275,15 +308,14 @@
 % Official documentation: http://mirrors.ctan.org/macros/latex/contrib/wrapfig/wrapfig-doc.pdf
 \usepackage{wrapfig}
 
-% Multiple styles for underlining. Option makes \emph and \em behave nomrally. Documentation: ftp://www.ctan.org/tex-archive/macros/latex/contrib/ulem/ulem.pdf
-\usepackage[normalem]{ulem}
-
-% Make cool'n fancy boxes is LaTeX. Documentation: http://www.ctan.org/pub/tex-archive/macros/latex/contrib/fancybox/fancybox-doc.pdf
+% Make cool'n fancy boxes is LaTeX.
+% Documentation: http://mirrors.dotsrc.org/ctan/macros/latex/contrib/fancybox/fancybox-doc.pdf
 \usepackage{fancybox}
 
-% Make TODO-notes in boxes. Example:
-%                                    \todo{My todo note}
-% Documentation: http://www.tex.ac.uk/tex-archive/macros/latex/contrib/todonotes/todonotes.pdf
+% Make TODO-notes in boxes.
+% Example:
+%       \todo{My todo note}
+% Documentation: http://mirrors.dotsrc.org/ctan/macros/latex/contrib/todonotes/todonotes.pdf
 \usepackage[english]{todonotes}
 
 % For typesetting units, for instance 50 N is typeset as \SI{50}{N}
