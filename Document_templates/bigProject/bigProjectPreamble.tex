@@ -1,0 +1,399 @@
+%%%%%%%%%%%%%%%%%% PREAMBLE BEGIN %%%%%%%%%%%%%%%%%%
+% A templet for mathematical LaTeX2e documents - partially based on the preambles avaible at http://psi.nbi.dk/groups/psi/wiki/Preamble
+
+
+%%%%%%%%%%%%%%%%%% ESSENTIAL FORMATTING %%%%%%%%%%%%%%%%%%
+\documentclass[a4paper,11pt]{scrartcl}
+% \documentclass[a4paper,11pt,notitlepage]{report}
+
+% If activated, labels will be shown in the margin. Use only when in draft mode.
+%\usepackage[notref,notcite]{showkeys}
+
+
+
+%%%%%%%%%%%%%%%%%% FOR DANISH DOCUMENTS %%%%%%%%%%%%%%%%%%
+
+% Chapters is given danish names and so on.
+% \usepackage[danish]{babel}
+\usepackage[english]{babel}
+
+% Makes commas work as decimal-points (fixes the spacing around.
+% \usepackage{icomma}
+
+% Sets the indentation for new paragraphs. Per default LaTeX creates some indentation whenever a new paragraph begins. While this might look visually pleasing, it's an english/american convention, and not "correct" danish typestting.
+% \parindent=0pt
+
+ % For use on Unix systems (Mac/Linux). Use this or the one below.
+\usepackage[utf8]{inputenc}
+
+% For use on Windows systems. Use this or the one above.
+% \usepackage[T1]{fontenc}
+
+
+
+%%%%%%%%%%%%%%%%%% ESSENTIAL PACKAGES %%%%%%%%%%%%%%%%%%
+% Make PDF-files searchable
+\usepackage{cmap}
+
+
+% Better mathematics, customization of equation numbering and much much more
+% Documentation: http://mirrors.ctan.org/macros/latex/contrib/mathtools/mathtools.pdf
+\usepackage{mathtools}
+% Defines the new size of tags
+\newtagform{footnotetext}[]{\footnotesize(}{)}
+% Initialize the new tag size defined above
+\usetagform{footnotetext}
+% Hides numbers on all equations with no refferences.
+\mathtoolsset{showonlyrefs}
+
+% \makeindex generates index, required for the TOC. Remember to compile two times to ensure that all changes and references have been updated properly!
+\usepackage{makeidx}
+
+% Typesets the pagenumber of the last page by entering \pageref{Lastpage}
+\usepackage{lastpage}
+
+% For including figures
+\usepackage{graphicx}
+
+
+
+%%%%%%%%%%%%%%%%%% ADDITIONAL FORMATTING %%%%%%%%%%%%%%%%%%
+% Adds space between lines. The default linespace is multiplied by the argument
+% \linespread{1.15}
+
+% % Sets the indentationlength for new equations.
+% \setlength{\mathindent}{2.4cm}
+
+% Overfull hbox under 3pt ignoreres - makes LaTeX a but less fussy, but might also make things look a little bit less pleasing to the eye.
+\hfuzz=3pt
+
+
+%     *** Explanation of the enumerations ***
+% Command                         Level             Comment
+%
+% \part{part}                      -1             not in letters
+% \chapter{chapter}                 0             only books and reports
+% \section{section}                 1             not in letters
+% \subsection{subsection}           2             not in letters
+% \subsubsection{subsubsection}     3             not in letters
+% \paragraph{paragraph}             4             not in letters
+% \subparagraph{subparagraph}       5             not in letters
+%
+% Source: https://secure.wikimedia.org/wikibooks/en/wiki/LaTeX/Document_Structure#Sectioning_Commands
+
+% Sets the maximal "depth" of the TOC to 3.
+\setcounter{tocdepth}{3}
+
+% Sets the depth of numbered 3, the default value is 2.
+\setcounter{secnumdepth}{2}
+
+% Start counting from 1, because we don't want the first page after the front page 1.
+\setcounter{page}{0}
+\setcounter{section}{0}
+
+% Sets rules for equation numbering to follow a section or subsection ( replace the "section" -argument with subsection ).
+% Default values set gives equation 3 in section 1 the number (tag) (1.3)
+% Docuentation: http://en.wikibooks.org/wiki/LaTeX/Tips_and_Tricks#Grouping_Figure.2FEquation_Numbering_by_Section
+\numberwithin{equation}{section}
+
+% This package allows you to custimize your titles, subtitle, subsubtitles and so forth. Only works with some documentstyles, Report and Article included.
+% Current setting set all titles to be typeset in a sans-serif font.
+% Unlike when you format the title manually, the formatting is not duplicated in the TOC. Documentation: http://www.ctex.org/documents/packages/layout/sectsty.pdf
+% \usepackage{sectsty}
+%     \allsectionsfont{\sffamily}
+
+% Use Asteriks, dagger, ddagger... for footnotes
+\renewcommand*{\thefootnote}{\fnsymbol{footnote}}
+
+% The geometry package allows for customisation of margins
+% Small tutorial: https://www.sharelatex.com/learn/Page_size_and_margins
+% Through tutorial: https://en.wikibooks.org/wiki/LaTeX/Page_Layout
+\usepackage[a4paper]{geometry}
+
+% It's considered obsolete, but it's very explicit and easy to use, which makes it a good alternative for geometry for a quick fix
+% Options are: \marginsize{left}{right}{top}{bottom}
+% \usepackage{anysize}
+%    \marginsize{2.0cm}{2.5cm}{2.2cm}{3.2cm}
+
+
+%    ***    Font options    ***
+% All fonts include mathematical characters for equations, and support the danish letters æøåÆØÅ.
+% Documentation: http://www.tug.dk/FontCatalogue/mathfonts.html
+% Remove the comment sign to use a font.
+
+% Palatino
+%\usepackage{mathpazo}
+
+% Times
+%\usepackage{mathptmx}
+
+% Adobe Utopia. Preview: http://www.tug.dk/FontCatalogue/utopia-mathdesign/
+\usepackage[adobe-utopia]{mathdesign}
+
+% Source Code Pro for typewriter text
+% \usepackage{sourcecodepro}
+
+% Anonymous Pro for typewriter text  NOTE: Documentation states that \usepackage[T1]{fontenc} and \usepackage{textcomp} must be loaded:
+% ftp://ftp.dante.de/tex-archive/fonts/anonymouspro/doc/AnonymousPro.pdf
+\usepackage[scale=0.95,ttdefault]{AnonymousPro}
+
+% Typeset symbols like \Letter (for email) and \Telefon (for phone number)
+\usepackage{marvosym}
+
+% Arev    (Sans-Serif)
+%\usepackage{arev}
+
+
+
+%   ***   Fancyheaders:   ***
+
+% The Fancyheaders-package makes those fancy header and footer seen in a lot af LaTeX-documents.
+\usepackage{fancyhdr}
+\pagestyle{fancy}                                                % Initialises layout options for the package
+\fancyhead{}                  % Vipes all header-fields
+\fancyhead[L]{My Title}
+\fancyhead[R]{My Subtitle}
+\headheight 14.5pt            % Sets the height of the header-field.
+\fancyfoot{}                  % Vipes all footer-fields
+\fancyfoot[C]{Page \thepage{} of \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.2pt}  % Set thickness of the headers line/ruler
+\renewcommand{\footrulewidth}{0.0pt}  % Set to 0 (zero) to remove footer rule
+
+% Ensures that first page (front page) have a clean header
+\fancypagestyle{firstPageStyle}
+{
+   \fancyhead{}
+   \fancyfoot{}
+   \headheight 0pt
+   \renewcommand{\headrulewidth}{0.0pt}
+   % \fancyfoot[C]{Page \thepage{} of \pageref{LastPage}}
+}
+
+
+
+%%%%%%%%%%%%%%%%%% ADDITIONAL PACKAGES %%%%%%%%%%%%%%%%%%
+% Greatly improves on PDFLaTeX's typesetting
+\usepackage{microtype}
+
+% Make it possible to color selected rows of a table, og to set up a color-pattern for the table.
+% Documentation: http://en.wikibooks.org/wiki/LaTeX/Tables#Alternate_Row_Colors_in_Tables
+\usepackage[table,dvipsnames]{xcolor}
+
+% Inline enumerations via the inparaenum environment
+% Examples on blog: https://texblog.org/2013/02/01/inline-lists-in-latex-using-paralist/
+% Documentation: http://mirrors.ctan.org/macros/latex/contrib/paralist/paralist.pdf
+\usepackage{paralist}
+
+% Ensures that the TOC is not present in the TOC, and that the list of litterature is included in the TOC.
+\usepackage[nottoc]{tocbibind}
+
+% Makes the TOC "clickable" and more. Documentation: https://secure.wikimedia.org/wikibooks/en/wiki/LaTeX/Hyperlinks#Customization
+\usepackage[colorlinks=true,linkcolor=black,urlcolor=cyan]{hyperref}
+
+% Typeset urls, and emails with properly formatted @'s
+% Use like: \url{ }, \url| | or \xyz
+% Documentation: http://mirrors.dotsrc.org/ctan/macros/latex/contrib/url/url.pdf
+\usepackage{url}
+% Define the \email-function
+\DeclareUrlCommand\email{\urlstyle{rm}}
+
+% Include source code formatted by Pygments
+% Tutorial: https://www.sharelatex.com/learn/Code_Highlighting_with_minted
+%
+% Inline typesetting:
+%        \mint{html}|<h2>Something <b>here</b></h2>|
+%
+% Include file:
+%       \inputminted{octave}{BitXorMatrix.m}
+%
+%
+% \begin{minted} {python}
+% def sayHi(message=None):
+%     if message:
+%         print(message)
+%     else:
+%         print('Hi!')
+% \end{minted}
+%
+\usepackage
+[frame=lines,  % Draw lines over and under source code
+framesep=2mm,
+baselinestretch=1.2,
+fontsize=\footnotesize,
+linenos  % Show line numbers
+]{minted}
+
+% For creating enviroment with multiple colums.
+% Note that figures is only supported in the \begin{figure*} -mode (*-mode), and they are stretched over all columns.
+% Initiated as: \begin{multicols} ... \end{multicols}.
+% Example: http://en.wikibooks.org/wiki/LaTeX/Page_Layout#Multi-column_pages
+% Documentation: http://www.ctan.org/tex-archive/macros/latex/required/tools/multicol.pdf
+\usepackage{multicol}
+\setlength{\columnsep}{0.9cm}
+
+% Allows printing of "nice" fractions like ½, a style often used when typesetting units. use as \nicefrac{1}{2} for typesetting ½ inside a mat enviroment.
+\usepackage[nice]{nicefrac}
+
+% Makes it possible to give the optional placeholder argument "H" for floats, forcing the float to be inserted immediately. This might create "holes" in the text!
+\usepackage{float}
+
+% Makes it possible to issue the command "\FloatBarrier" , "flushing" all floats in the buffer to the document.
+% It does not create a new page like the "\clearpage".
+% Also, the "[section]"-option ensures that floats is confined the the section where the insersion-code was issued (or right above or below - remove the "[above]" or "[below]" oprtions not allow this behavior).
+\usepackage[section,above,below]{placeins}
+
+% Typeset better tables, with proper vertical spacing, ofr instance.
+% Tutorial: http://en.wikibooks.org/wiki/LaTeX/Tables#Professional_tables
+% Documentation: http://mirrors.med.harvard.edu/ctan/macros/latex/contrib/booktabs/booktabs.pdf
+\usepackage{booktabs}
+
+% Color individual rows in the booktabs enviroment.
+% Docuentation: http://ftp.math.purdue.edu/mirrors/ctan.org/macros/latex/contrib/colortbl/colortbl.pdf
+\usepackage{colortbl}
+
+% Lets one row expand over multiple colulms.
+% Documentation: https://secure.wikimedia.org/wikibooks/en/wiki/LaTeX/Tables#Spanning
+\usepackage{multirow}
+
+% Allows custom formatting of the caption-text of floats.
+% Documentation: http://mirrors.dotsrc.org/ctan/macros/latex/contrib/caption/caption-eng.pdf
+\usepackage[labelfont=bf, font=small, justification=centerlast, margin=15pt, parskip=0pt]{caption}
+\setlength{\abovecaptionskip}{-1ex}
+% \setlength{\belowcaptionskip}{1ex}
+
+% For printing figures and tables side by side: http://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions#Subfloats
+\usepackage{subcaption}
+
+% Inline figures: http://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions#Wrapping_text_around_figures
+% Official documentation: http://mirrors.ctan.org/macros/latex/contrib/wrapfig/wrapfig-doc.pdf
+\usepackage{wrapfig}
+
+% Make cool'n fancy boxes is LaTeX.
+% Documentation: http://mirrors.dotsrc.org/ctan/macros/latex/contrib/fancybox/fancybox-doc.pdf
+\usepackage{fancybox}
+
+% Make TODO-notes in boxes.
+% Example:
+%       \todo{My todo note}
+% Documentation: http://mirrors.dotsrc.org/ctan/macros/latex/contrib/todonotes/todonotes.pdf
+\usepackage[english]{todonotes}
+
+% For typesetting units, for instance 50 N is typeset as \SI{50}{N}
+\usepackage{siunitx}
+\sisetup{
+%    list-final-separator = {\translate{og} },
+%    range-phrase = { \translate{til} },
+    separate-uncertainty = true,
+    multi-part-units = single,
+    range-units = single,
+    group-decimal-digits = false,
+    exponent-product = \cdot,
+    per-mode = fraction
+}
+% Declare unit px for pixel. Used with the siunitx package
+\DeclareSIUnit{\pixels}{px}
+
+% Convert EPS to PDF before compiling with PDFLATEX. Allows insertion of EPS-graphics.
+\usepackage{epstopdf}
+
+% By default, the package will generate a bit over one page, paragraph 1-7, using \lipsum or \lipsum[3-56] for multiple paragraphs.
+\usepackage{lipsum}
+
+%%%%%%%%%%%%%%%%%% USER DEFINED COMMANDS %%%%%%%%%%%%%%%%%%
+
+%   ***   Physics Formatting   ***
+% Activete here (bold, non-italicized unit vectors) or under the *** Mathematical Formatting ***
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand{\vecc}[2]{\left(\begin{array}{c} #1 \\ #2 \end{array}\right)}
+\newcommand{\veccc}[3]{\left(\begin{array}{c} #1 \\ #2 \\ #3 \end{array}\right)}
+\newcommand{\I}{\mathbf{\widehat{i}}}
+\newcommand{\J}{\mathbf{\widehat{j}}}
+\newcommand{\K}{\mathbf{\widehat{k}}}
+\newcommand{\erho}{{\widehat{\mathbf{e}}}_{\mathrm{\rho}}}
+\newcommand{\ephi}{{\widehat{\mathbf{e}}}_{\mathrm{\Phi}}}
+\newcommand{\ethe}{{\widehat{\mathbf{e}}}_{\mathrm{\theta}}}
+\newcommand{\ez}{{{\widehat{\mathbf{e}}}_{z}}}
+\newcommand{\er}{{{\widehat{\mathbf{e}}}_{r}}}
+\newcommand{\es}{{{\widehat{\mathbf{e}}}_{s}}}
+\newcommand{\uvec}[1]{\mathbf{\widehat{#1}}}  % Unit vector
+
+
+%   ***   Mathematical Formatting   ***
+% Activete here (slender, italicized unit vectors) or under the *** Physics formatting ***
+%\newcommand{\I}{\mathrm{\widehat{i}}}
+%\newcommand{\J}{\mathrm{\widehat{j}}}
+%\newcommand{\K}{\mathrm{\widehat{k}}}
+%\newcommand{\erho}{\mathrm{\widehat{e_{\rho}}}}
+%\newcommand{\ephi}{\mathrm{\widehat{e_{\Phi}}}}
+%\newcommand{\ez}{\mathrm{\widehat{e_{z}}}}
+%\newcommand{\er}{\mathrm{\widehat{e_{r}}}}
+%\newcommand{\es}{\mathrm{\widehat{e_{s}}}}
+
+
+% Some math operators (like \sin, \cos...)
+\DeclareMathOperator*{\sinc}{sinc}
+\DeclareMathOperator*{\fft}{fft \,}
+\DeclareMathOperator*{\ifft}{ifft \,}
+\DeclareMathOperator*{\ceil}{ceil \,}
+\DeclareMathOperator*{\floor}{floor \,}
+\DeclareMathOperator*{\round}{round \,}
+\DeclareMathOperator*{\Tr}{Tr \,}      % Matrix trace
+\newcommand{\T}{^{\mathrm{T}}}         % Matrix transpose
+
+% Typesets a upright d.
+% Intended for use in integrals like $ \int 2x dx $, which should be written as $ \int 2x \di x $.
+% A little white space is added in front of the "d".
+\newcommand{\di}{\; \mathrm{d}}
+
+% Write "\p" instead of "\partial".
+% Also, it adds a little white space in front of the "partial"-symbol.
+\newcommand{\p}{\; \partial}
+
+% Typesets a "d/d"-fraction, with optional arguments (placed behind the "d"'s in the nominator and denominator).
+% Use as \dd{y}{x} for a "dy/dx"-fraction.
+\newcommand{\dd}[2]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
+
+% Typesets a "\partial/\partial"-fraction, with optional arguments (placed behind the "\partial"'s in the nominator and denominator).
+% Use as \pd{y}{x} for a "\partial y / \partial x"-fraction.
+\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
+
+% A short, quicj way of inserting a 0.8 cm blank vertical space.
+\newcommand{\vsp}{\vspace{0.8cm}}
+
+% Typeset a non-italicized e in math enviroments, argument being the exponent.
+% To typeset $ e^{x+y} $, use $ \e^{x+y} $, and the e wont be italicized.
+\newcommand{\e}[1]{\mathrm{e}^{#1}}
+
+% Makes it easy to reference to something severel pages away.
+% Otherwise, it works as the "\ref"-command.
+\newcommand{\fullref}[1]{\ref{#1} på side~\pageref{#1}}
+
+% Lats you write an averaged function "<f(x)>" as $ \avg{f(x)} $
+\newcommand{\avgg}[1]{\left\langle #1 \right\rangle}
+
+% Shrinks the size of the argument, and puts it in math-enviroment.
+% Well suited for small inline arrays.
+\newcommand{\vecsm}[1]{\mbox{\footnotesize ${#1}$ }}
+
+%    *** New Enviroments ***
+% Define the color used as a background color
+\definecolor{MyGray}{rgb}{0.83,0.83,0.83}
+% Define the width of a borden -- only relevant if the "\fbox"-command uncommentet.
+\setlength{\fboxrule}{0.5pt}
+
+% Enviroment used as \graybox{  }, the contents of the box between the curly brackes.
+% Contents may be broken into severel lines.
+\newcommand{\graybox}[1]{\vspace*{-0.2cm}
+                       \begin{center}
+                        \colorbox{MyGray}{
+                         %\fbox{
+                          \begin{minipage}[t]{0.97\textwidth}
+                            {\small #1 }
+                          \end{minipage}
+                         %}
+                        }
+                       \end{center}  }
+
+
+%%%%%%%%%%%%%%%%%% DOCUMENTPART BEGIN %%%%%%%%%%%%%%%%%%
+\makeindex
