@@ -170,46 +170,6 @@
 }
 
 
-%   ***   Physics Formatting   ***
-% Activete here (bold, non-italicized unit vectors) or under the *** Mathematical Formatting ***
-\renewcommand{\vec}[1]{\mathbf{#1}}
-\newcommand{\vecc}[2]{\left(\begin{array}{c} #1 \\ #2 \end{array}\right)}
-\newcommand{\veccc}[3]{\left(\begin{array}{c} #1 \\ #2 \\ #3 \end{array}\right)}
-\newcommand{\I}{\mathbf{\widehat{i}}}
-\newcommand{\J}{\mathbf{\widehat{j}}}
-\newcommand{\K}{\mathbf{\widehat{k}}}
-\newcommand{\erho}{{\widehat{\mathbf{e}}}_{\mathrm{\rho}}}
-\newcommand{\ephi}{{\widehat{\mathbf{e}}}_{\mathrm{\Phi}}}
-\newcommand{\ethe}{{\widehat{\mathbf{e}}}_{\mathrm{\theta}}}
-\newcommand{\ez}{{{\widehat{\mathbf{e}}}_{z}}}
-\newcommand{\er}{{{\widehat{\mathbf{e}}}_{r}}}
-\newcommand{\es}{{{\widehat{\mathbf{e}}}_{s}}}
-\newcommand{\uvec}[1]{\mathbf{\widehat{#1}}}  % Unit vector
-
-
-%   ***   Mathematical Formatting   ***
-% Activete here (slender, italicized unit vectors) or under the *** Physics formatting ***
-%\newcommand{\I}{\mathrm{\widehat{i}}}
-%\newcommand{\J}{\mathrm{\widehat{j}}}
-%\newcommand{\K}{\mathrm{\widehat{k}}}
-%\newcommand{\erho}{\mathrm{\widehat{e_{\rho}}}}
-%\newcommand{\ephi}{\mathrm{\widehat{e_{\Phi}}}}
-%\newcommand{\ez}{\mathrm{\widehat{e_{z}}}}
-%\newcommand{\er}{\mathrm{\widehat{e_{r}}}}
-%\newcommand{\es}{\mathrm{\widehat{e_{s}}}}
-
-
-
-% Some math operators (like \sin, \cos...)
-\DeclareMathOperator*{\sinc}{sinc}
-\DeclareMathOperator*{\fft}{fft \,}
-\DeclareMathOperator*{\ifft}{ifft \,}
-\DeclareMathOperator*{\ceil}{ceil \,}
-\DeclareMathOperator*{\floor}{floor \,}
-\DeclareMathOperator*{\round}{round \,}
-\DeclareMathOperator*{\Tr}{Tr \,}      % Matrix trace
-\newcommand{\T}{^{\mathrm{T}}}         % Matrix transpose
-
 
 %%%%%%%%%%%%%%%%%% ADDITIONAL PACKAGES %%%%%%%%%%%%%%%%%%
 % Greatly improves on PDFLaTeX's typesetting
@@ -340,49 +300,90 @@ linenos  % Show line numbers
 \usepackage{lipsum}
 
 %%%%%%%%%%%%%%%%%% USER DEFINED COMMANDS %%%%%%%%%%%%%%%%%%
+
+%   ***   Physics Formatting   ***
+% Activete here (bold, non-italicized unit vectors) or under the *** Mathematical Formatting ***
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand{\vecc}[2]{\left(\begin{array}{c} #1 \\ #2 \end{array}\right)}
+\newcommand{\veccc}[3]{\left(\begin{array}{c} #1 \\ #2 \\ #3 \end{array}\right)}
+\newcommand{\I}{\mathbf{\widehat{i}}}
+\newcommand{\J}{\mathbf{\widehat{j}}}
+\newcommand{\K}{\mathbf{\widehat{k}}}
+\newcommand{\erho}{{\widehat{\mathbf{e}}}_{\mathrm{\rho}}}
+\newcommand{\ephi}{{\widehat{\mathbf{e}}}_{\mathrm{\Phi}}}
+\newcommand{\ethe}{{\widehat{\mathbf{e}}}_{\mathrm{\theta}}}
+\newcommand{\ez}{{{\widehat{\mathbf{e}}}_{z}}}
+\newcommand{\er}{{{\widehat{\mathbf{e}}}_{r}}}
+\newcommand{\es}{{{\widehat{\mathbf{e}}}_{s}}}
+\newcommand{\uvec}[1]{\mathbf{\widehat{#1}}}  % Unit vector
+
+
+%   ***   Mathematical Formatting   ***
+% Activete here (slender, italicized unit vectors) or under the *** Physics formatting ***
+%\newcommand{\I}{\mathrm{\widehat{i}}}
+%\newcommand{\J}{\mathrm{\widehat{j}}}
+%\newcommand{\K}{\mathrm{\widehat{k}}}
+%\newcommand{\erho}{\mathrm{\widehat{e_{\rho}}}}
+%\newcommand{\ephi}{\mathrm{\widehat{e_{\Phi}}}}
+%\newcommand{\ez}{\mathrm{\widehat{e_{z}}}}
+%\newcommand{\er}{\mathrm{\widehat{e_{r}}}}
+%\newcommand{\es}{\mathrm{\widehat{e_{s}}}}
+
+
 % Some math operators (like \sin, \cos...)
-\DeclareMathOperator*{\sinc}{sinc}  % Sinc = sin(x)/x function
-\DeclareMathOperator*{\fft}{fft \,}  % Fourier Transform
-\DeclareMathOperator*{\ifft}{ifft \,}  % Inverse Fourier Transform
-\DeclareMathOperator*{\Tr}{Tr \,}  % Matrix trace
+\DeclareMathOperator*{\sinc}{sinc}
+\DeclareMathOperator*{\fft}{fft \,}
+\DeclareMathOperator*{\ifft}{ifft \,}
+\DeclareMathOperator*{\ceil}{ceil \,}
+\DeclareMathOperator*{\floor}{floor \,}
+\DeclareMathOperator*{\round}{round \,}
+\DeclareMathOperator*{\Tr}{Tr \,}      % Matrix trace
+\newcommand{\T}{^{\mathrm{T}}}         % Matrix transpose
 
-% Matrix transpose
-\newcommand{\T}{^{\mathrm{T}}}
-
-% Double underline
-\newcommand{\dul}[1]{\underline{\underline{#1}}}
-
-% Typesets a upright d. Intended for use in integrals like $ \int 2x dx $, which should be written as $ \int 2x \di x $. A little white space is added in front of the "d".
+% Typesets a upright d.
+% Intended for use in integrals like $ \int 2x dx $, which should be written as $ \int 2x \di x $.
+% A little white space is added in front of the "d".
 \newcommand{\di}{\; \mathrm{d}}
 
-% Write "\p" instead of "\partial". Also, it adds a little white space in front of the "partial"-symbol.
+% Write "\p" instead of "\partial".
+% Also, it adds a little white space in front of the "partial"-symbol.
 \newcommand{\p}{\; \partial}
 
-% Typesets a "d/d"-fraction, with optional arguments (placed behind the "d"'s in the nominator and denominator). Use as \dd{y}{x} for a "dy/dx"-fraction.
+% Typesets a "d/d"-fraction, with optional arguments (placed behind the "d"'s in the nominator and denominator).
+% Use as \dd{y}{x} for a "dy/dx"-fraction.
 \newcommand{\dd}[2]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
 
-% Typesets a "\partial/\partial"-fraction, with optional arguments (placed behind the "\partial"'s in the nominator and denominator). Use as \pd{y}{x} for a "\partial y / \partial x"-fraction.
+% Typesets a "\partial/\partial"-fraction, with optional arguments (placed behind the "\partial"'s in the nominator and denominator).
+% Use as \pd{y}{x} for a "\partial y / \partial x"-fraction.
 \newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
 
 % A short, quicj way of inserting a 0.8 cm blank vertical space.
 \newcommand{\vsp}{\vspace{0.8cm}}
 
-% Typeset a non-italicized e in math enviroments, argument being the exponent. To typeset $ e^{x+y} $, use $ \e^{x+y} $, and the e wont be italicized.
+% Typeset a non-italicized e in math enviroments, argument being the exponent.
+% To typeset $ e^{x+y} $, use $ \e^{x+y} $, and the e wont be italicized.
 \newcommand{\e}[1]{\mathrm{e}^{#1}}
 
-% Makes it easy to reference to something severel pages away. Otherwise, it works as the "\ref"-command.
+% Makes it easy to reference to something severel pages away.
+% Otherwise, it works as the "\ref"-command.
 \newcommand{\fullref}[1]{\ref{#1} på side~\pageref{#1}}
 
 % Lats you write an averaged function "<f(x)>" as $ \avg{f(x)} $
 \newcommand{\avgg}[1]{\left\langle #1 \right\rangle}
 
-% Shrinks the size of the argument, and puts it in math-enviroment. Well suited for small inline arrays.
+% Shrinks the size of the argument, and puts it in math-enviroment.
+% Well suited for small inline arrays.
 \newcommand{\vecsm}[1]{\mbox{\footnotesize ${#1}$ }}
 
 %    *** New Enviroments ***
-\definecolor{MyGray}{rgb}{0.83,0.83,0.83}            % Define the color used as a background color
-\setlength{\fboxrule}{0.5pt}                    % Define the width of a borden -- only relevant if the "\fbox"-command uncommentet.
-\newcommand{\graybox}[1]{\vspace*{-0.2cm}            % Enviroment activatet as \graybox{  }, the contents of the box between the curly brackes. Contents may be broken into severel lines.
+% Define the color used as a background color
+\definecolor{MyGray}{rgb}{0.83,0.83,0.83}
+% Define the width of a borden -- only relevant if the "\fbox"-command uncommentet.
+\setlength{\fboxrule}{0.5pt}
+
+% Enviroment used as \graybox{  }, the contents of the box between the curly brackes.
+% Contents may be broken into severel lines.
+\newcommand{\graybox}[1]{\vspace*{-0.2cm}
                        \begin{center}
                         \colorbox{MyGray}{
                          %\fbox{
@@ -396,13 +397,3 @@ linenos  % Show line numbers
 
 %%%%%%%%%%%%%%%%%% DOCUMENTPART BEGIN %%%%%%%%%%%%%%%%%%
 \makeindex
-
-
-
-
-
-
-
-
-
-
