@@ -3,8 +3,9 @@
 
 
 %%%%%%%%%%%%%%%%%% ESSENTIAL FORMATTING %%%%%%%%%%%%%%%%%%
-% \documentclass[a4paper,11pt,notitlepage]{report}
 \documentclass[a4paper,11pt]{scrartcl}
+% \documentclass[a4paper,11pt,notitlepage]{report}
+
 % If activated, labels will be shown in the margin. Use only when in draft mode.
 %\usepackage[notref,notcite]{showkeys}
 
@@ -13,98 +14,109 @@
 %%%%%%%%%%%%%%%%%% FOR DANISH DOCUMENTS %%%%%%%%%%%%%%%%%%
 
 % Chapters is given danish names and so on.
+% \usepackage[danish]{babel}
 \usepackage[english]{babel}
-
-% For use on Unix systems (Mac/Linux). Use this or the one below.
-\usepackage[utf8]{inputenc}
 
 % Makes commas work as decimal-points (fixes the spacing around.
 % \usepackage{icomma}
+
+% Sets the indentation for new paragraphs. Per default LaTeX creates some indentation whenever a new paragraph begins. While this might look visually pleasing, it's an english/american convention, and not "correct" danish typestting.
+% \parindent=0pt
+
+ % For use on Unix systems (Mac/Linux). Use this or the one below.
+\usepackage[utf8]{inputenc}
 
 % For use on Windows systems. Use this or the one above.
 % \usepackage[T1]{fontenc}
 
 
 
-
 %%%%%%%%%%%%%%%%%% ESSENTIAL PACKAGES %%%%%%%%%%%%%%%%%%
-% Better mathematics ;-)
-\usepackage{amsmath,amssymb,amsfonts,amsthm}
+% Make PDF-files searchable
+\usepackage{cmap}
 
-% \makeindex generates index, required for the TOC. Remember to compile two times to ensure that all changes and reffrences have been updated properly!
+
+% Better mathematics, customization of equation numbering and much much more
+% Documentation: http://mirrors.ctan.org/macros/latex/contrib/mathtools/mathtools.pdf
+\usepackage{mathtools}
+% Defines the new size of tags
+\newtagform{footnotetext}[]{\footnotesize(}{)}
+% Initialize the new tag size defined above
+\usetagform{footnotetext}
+% Hides numbers on all equations with no refferences.
+\mathtoolsset{showonlyrefs}
+
+% \makeindex generates index, required for the TOC. Remember to compile two times to ensure that all changes and references have been updated properly!
 \usepackage{makeidx}
 
 % Typesets the pagenumber of the last page by entering \pageref{Lastpage}
 \usepackage{lastpage}
 
-% Include external graphics files. Note for scaling graphics: for scaling the graphic to, for instance, 45 % of the pagewidth, the command "\includegraphics[width=0.55\textwidth]{./imagefile.png}" may be used (\linewidth also work - espicially useful when working in a multicolulm-document, NOT created be the multicol-package). Documentation: https://secure.wikimedia.org/wikibooks/en/wiki/LaTeX/Importing_Graphics#Including_graphics
+% For including figures
 \usepackage{graphicx}
 
 
 
-
 %%%%%%%%%%%%%%%%%% ADDITIONAL FORMATTING %%%%%%%%%%%%%%%%%%
-% Adds space between lines. The default linespace is multiplied by the argument ( decimal nuber -- use . instead of , ).
+% Adds space between lines. The default linespace is multiplied by the argument
 % \linespread{1.15}
 
-% Sets the indentation for new paragraphs. Per default LaTeX creates some indentation whenever a new paragraph begins. While this might look visually pleasing, it's an english/american convention, and not "correct" danish typestting.
-% \parindent=0pt
+% % Sets the indentationlength for new equations.
+% \setlength{\mathindent}{2.4cm}
 
 % Overfull hbox under 3pt ignoreres - makes LaTeX a but less fussy, but might also make things look a little bit less pleasing to the eye.
 \hfuzz=3pt
 
+
+%     *** Explanation of the enumerations ***
+% Command                         Level             Comment
+%
+% \part{part}                      -1             not in letters
+% \chapter{chapter}                 0             only books and reports
+% \section{section}                 1             not in letters
+% \subsection{subsection}           2             not in letters
+% \subsubsection{subsubsection}     3             not in letters
+% \paragraph{paragraph}             4             not in letters
+% \subparagraph{subparagraph}       5             not in letters
+%
+% Source: https://secure.wikimedia.org/wikibooks/en/wiki/LaTeX/Document_Structure#Sectioning_Commands
+
 % Sets the maximal "depth" of the TOC to 3.
 \setcounter{tocdepth}{3}
 
-% Use Asteriks, dagger, ddagger... for footnotes
-\renewcommand*{\thefootnote}{\fnsymbol{footnote}}
+% Sets the depth of numbered 3, the default value is 2.
+\setcounter{secnumdepth}{2}
 
 % Start counting from 1, because we don't want the first page after the front page 1.
 \setcounter{page}{0}
 \setcounter{section}{0}
 
-% Sets the depth of numbered 3, the default value is 2.
-\setcounter{secnumdepth}{2}
+% Sets rules for equation numbering to follow a section or subsection ( replace the "section" -argument with subsection ).
+% Default values set gives equation 3 in section 1 the number (tag) (1.3)
+% Docuentation: http://en.wikibooks.org/wiki/LaTeX/Tips_and_Tricks#Grouping_Figure.2FEquation_Numbering_by_Section
+\numberwithin{equation}{section}
 
-% This package allows you to custimize your titles, subtitle, subsubtitles and so forth. Only works with some documentstyles, Report and Article included. Current setting set all titles to be typeset in a sans-serif font. Unlike when you format the title manually, the formatting is not duplicated in the TOC. Documentation: http://www.ctex.org/documents/packages/layout/sectsty.pdf
+% This package allows you to custimize your titles, subtitle, subsubtitles and so forth. Only works with some documentstyles, Report and Article included.
+% Current setting set all titles to be typeset in a sans-serif font.
+% Unlike when you format the title manually, the formatting is not duplicated in the TOC. Documentation: http://www.ctex.org/documents/packages/layout/sectsty.pdf
 % \usepackage{sectsty}
 %     \allsectionsfont{\sffamily}
 
-% % Sets the indentationlength for new equations.
-% \setlength{\mathindent}{2.4cm}
+% Use Asteriks, dagger, ddagger... for footnotes
+\renewcommand*{\thefootnote}{\fnsymbol{footnote}}
 
-%     *** Explanation of the enumerations ***
-% Command 						Level 			Comment
-%
-% \part{part} 						-1	 		not in letters
-% \chapter{chapter}		 			0 			only books and reports
-% \section{section} 					1 			not in letters
-% \subsection{subsection} 				2 			not in letters
-% \subsubsection{subsubsection}	 			3 			not in letters
-% \paragraph{paragraph} 				4 			not in letters
-% \subparagraph{subparagraph} 				5 			not in letters
-% Source: https://secure.wikimedia.org/wikibooks/en/wiki/LaTeX/Document_Structure#Sectioning_Commands
+% The geometry package allows for customisation of margins
+% Small tutorial: https://www.sharelatex.com/learn/Page_size_and_margins
+% Through tutorial: https://en.wikibooks.org/wiki/LaTeX/Page_Layout
+\usepackage[a4paper]{geometry}
 
-
-% Sets rules for equation numbering to follow a section or subsection ( replace the "section" -argument with subsection ). Default values set gives equation 3 in section 1 the number (tag) (1.3). Docuentation: http://en.wikibooks.org/wiki/LaTeX/Tips_and_Tricks#Grouping_Figure.2FEquation_Numbering_by_Section
-\numberwithin{equation}{section}
-
-
-%   ***   Margins:   ***
-%\usepackage{vmargin}
-%\setpapersize{A4}
-%\setmarginsrb{30mm}{20mm}{30mm}{20mm}{12pt}{11mm}{0pt}{11mm}				% Arguments:{hleftmargini}{htopmargini}{hrightmargini}{hbottommargini}
-
-% Makes page margins narrower than usual.
-%\usepackage{a4wide}
-
-% As an alternative to vmargin, anysize can be used. Vmargin gives a lot of options, but is also harder to configure. Vmargin support layout for double-paged publications. Actually, the Anysize-package is considered old and obsolete.
+% It's considered obsolete, but it's very explicit and easy to use, which makes it a good alternative for geometry for a quick fix
 % Options are: \marginsize{left}{right}{top}{bottom}
-\usepackage{anysize}
-   \marginsize{2.0cm}{2.5cm}{2.2cm}{3.2cm}
+% \usepackage{anysize}
+%    \marginsize{2.0cm}{2.5cm}{2.2cm}{3.2cm}
 
 
-%	***	Font options	***
+%    ***    Font options    ***
 % All fonts include mathematical characters for equations, and support the danish letters æøåÆØÅ.
 % Documentation: http://www.tug.dk/FontCatalogue/mathfonts.html
 % Remove the comment sign to use a font.
@@ -115,29 +127,37 @@
 % Times
 %\usepackage{mathptmx}
 
-% Adobe Utopia
+% Adobe Utopia. Preview: http://www.tug.dk/FontCatalogue/utopia-mathdesign/
 \usepackage[adobe-utopia]{mathdesign}
 
-% Arev	(Sans-Serif)
+% Source Code Pro for typewriter text
+% \usepackage{sourcecodepro}
+
+% Anonymous Pro for typewriter text  NOTE: Documentation states that \usepackage[T1]{fontenc} and \usepackage{textcomp} must be loaded:
+% ftp://ftp.dante.de/tex-archive/fonts/anonymouspro/doc/AnonymousPro.pdf
+\usepackage[scale=0.95,ttdefault]{AnonymousPro}
+
+% Typeset symbols like \Letter (for email) and \Telefon (for phone number)
+\usepackage{marvosym}
+
+% Arev    (Sans-Serif)
 %\usepackage{arev}
 
 
+
 %   ***   Fancyheaders:   ***
-%The Fancyheaders-package makes those fancy header and footer seen in a lot af LaTeX-documents.
-\usepackage{fancyhdr}								                             % Loads the package
-\pagestyle{fancy}							                                   % Initialises layout options for the package
-\fancyhead{}                                                     % Vipes all header-fields
-\fancyhead[L]{My Title}                                          % Typesets in upper left corner
-% \fancyhead[C]{}                                                % Typesets in upper middle
-\fancyhead[R]{My Subtitle}                                       % Typesets in upper right corner
-\headheight 14.5pt                                               % Sets the height of the header-field. ATTENTION: Might not work with the Vmargin-package
-\fancyfoot{}                                                     % Vipes all footer-fields
-% \fancyfoot[L]{}                                                % Typesets in lower left corner
-\fancyfoot[C]{Page \thepage{} of \pageref{LastPage}}             % Typesets in lower middle corner
-% \fancyfoot[C]{Side \thepage{} af \pageref{LastPage}}           % Typesets in lower middle corner
-% \fancyfoot[R]{}                                                % Typesets in lower right corner
-\renewcommand{\headrulewidth}{0.2pt}                             % Set thickness of the headers line/ruler. Set to 0 (zero) to remove line/ruler.
-\renewcommand{\footrulewidth}{0.0pt}                             % Set thickness of the footers line/ruler. Set to 0 (zero) to remove line/ruler.
+
+% The Fancyheaders-package makes those fancy header and footer seen in a lot af LaTeX-documents.
+\usepackage{fancyhdr}
+\pagestyle{fancy}                                                % Initialises layout options for the package
+\fancyhead{}                  % Vipes all header-fields
+\fancyhead[L]{My Title}
+\fancyhead[R]{My Subtitle}
+\headheight 14.5pt            % Sets the height of the header-field.
+\fancyfoot{}                  % Vipes all footer-fields
+\fancyfoot[C]{Page \thepage{} of \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.2pt}  % Set thickness of the headers line/ruler
+\renewcommand{\footrulewidth}{0.0pt}  % Set to 0 (zero) to remove footer rule
 
 % Ensures that first page (front page) have a clean header
 \fancypagestyle{firstPageStyle}
@@ -146,7 +166,7 @@
    \fancyfoot{}
    \headheight 0pt
    \renewcommand{\headrulewidth}{0.0pt}
-   \fancyfoot[C]{Page \thepage{} of \pageref{LastPage}}
+   % \fancyfoot[C]{Page \thepage{} of \pageref{LastPage}}
 }
 
 
@@ -181,39 +201,28 @@
 
 
 % Some math operators (like \sin, \cos...)
-\DeclareMathOperator*{\sinc}{sinc}  % Sinc = sin(x)/x function
-\DeclareMathOperator*{\fft}{fft \,}  % Fourier Transform
-\DeclareMathOperator*{\ifft}{ifft \,}  % Inverse Fourier Transform
-\DeclareMathOperator*{\Tr}{Tr \,}  % Matrix trace
-\newcommand{\T}{^{\mathrm{T}}}  % Matrix transpose
+\DeclareMathOperator*{\sinc}{sinc}
+\DeclareMathOperator*{\fft}{fft \,}
+\DeclareMathOperator*{\ifft}{ifft \,}
+\DeclareMathOperator*{\ceil}{ceil \,}
+\DeclareMathOperator*{\floor}{floor \,}
+\DeclareMathOperator*{\round}{round \,}
+\DeclareMathOperator*{\Tr}{Tr \,}      % Matrix trace
+\newcommand{\T}{^{\mathrm{T}}}         % Matrix transpose
 
 
 %%%%%%%%%%%%%%%%%% ADDITIONAL PACKAGES %%%%%%%%%%%%%%%%%%
 % Greatly improves on PDFLaTeX's typesetting
 \usepackage{microtype}
 
-% Enables you to typeset colored text in a document, and change of background color of the page. Documentation: https://secure.wikimedia.org/wikibooks/en/wiki/LaTeX/Colors
-\usepackage[]{color}
-
-% % This package allows for customisation of the equation-numbers (that's what it is used for here), and much much more. Documentation: http://www.ctan.org/tex-archive/macros/latex/contrib/mh/mathtools.pdf
-% \usepackage{mathtools}
-% 	\newtagform{lilleskrift}[]{\footnotesize(}{)}			% Defines the new size of tags
-% 	\usetagform{lilleskrift}					% Initialize the new tag size defined above
-%  	\mathtoolsset{showonlyrefs}					% Hides numbers on all equations with no refferences.
-
 % Make it possible to color selected rows of a table, og to set up a color-pattern for the table.
 % Documentation: http://en.wikibooks.org/wiki/LaTeX/Tables#Alternate_Row_Colors_in_Tables
 \usepackage[table,dvipsnames]{xcolor}
 
-% Inline enumerations http://en.wikibooks.org/wiki/LaTeX/List_Structures#With_package_paralist
-% Official documentation: http://mirrors.ctan.org/macros/latex/contrib/paralist/paralist.pdf
+% Inline enumerations via the inparaenum environment
+% Examples on blog: https://texblog.org/2013/02/01/inline-lists-in-latex-using-paralist/
+% Documentation: http://mirrors.ctan.org/macros/latex/contrib/paralist/paralist.pdf
 \usepackage{paralist}
-
-% Degrees-symbol & Euro-symbol: \textcel & \texteuro
-\usepackage{textcomp}
-
-% For making custom enumarations. Examples (bottom of page): http://www.f.kth.se/~ante/latex.php
-\usepackage{enumerate}
 
 % Ensures that the TOC is not present in the TOC, and that the list of litterature is included in the TOC.
 \usepackage[nottoc]{tocbibind}
@@ -221,11 +230,17 @@
 % Makes the TOC "clickable" and more. Documentation: https://secure.wikimedia.org/wikibooks/en/wiki/LaTeX/Hyperlinks#Customization
 \usepackage[colorlinks=true,linkcolor=black,urlcolor=cyan]{hyperref}
 
+% Typeset urls, and emails with properly formatted @'s
+% Use like: \url{ }, \url| | or \xyz
+% Documentation: http://mirrors.dotsrc.org/ctan/macros/latex/contrib/url/url.pdf
+\usepackage{url}
+% Define the \email-function
+\DeclareUrlCommand\email{\urlstyle{rm}}
+
 % Alternative to Verbatim-enviroment -- and smarter. Example:https://texblog.wordpress.com/2008/04/02/include-source-code-in-latex-with-listings/ . Docuentation: http://www.ctan.org/tex-archive/macros/latex/contrib/listings/listings.pdf (58 pages).
 \usepackage{listings}
-% \lstset{numbers=left, stepnumber=5, language=Matlab, tabsize=6} % Custom settings for the enviroments.
 \lstset{
-  % language=C,                                       % the language of the code
+  language=python,
   basicstyle=\footnotesize\ttfamily,                % the size of the fonts that are used for the code
   numbers=left,                                     % where to put the line-numbers
   numberstyle=\tiny\color{gray},                    % the style that is used for the line-numbers
@@ -242,11 +257,6 @@
   breaklines=true,                                  % sets automatic line breaking
   breakatwhitespace=true,                           % sets if automatic breaks should only happen at whitespace
   title=\lstname,                                   % show the filename of files included with \lstinputlisting; also try caption instead of title
-  keywordstyle=\color{BrickRed},                    % keyword style
-  commentstyle=\color{JungleGreen},                 % comment style
-  % stringstyle=\color{ForestGreen},                % string literal style
-  % escapeinside={\%*}{*)},                         % if you want to add LaTeX within your code
-  % morekeywords={COMPONENT,AT,ROTATED,RELATIVE},     % if you want to add more keywords to the set
 }
 
 % Easyier listing of source code using the listings package.
@@ -309,14 +319,14 @@
 % For typesetting units, for instance 50 N is typeset as \SI{50}{N}
 \usepackage{siunitx}
 \sisetup{
-%	list-final-separator = {\translate{og} },
-%	range-phrase = { \translate{til} },
-	separate-uncertainty = true,
-	multi-part-units = single,
-	range-units = single,
-	group-decimal-digits = false,
-	exponent-product = \cdot,
-	per-mode = fraction
+%    list-final-separator = {\translate{og} },
+%    range-phrase = { \translate{til} },
+    separate-uncertainty = true,
+    multi-part-units = single,
+    range-units = single,
+    group-decimal-digits = false,
+    exponent-product = \cdot,
+    per-mode = fraction
 }
 % Declare unit px for pixel. Used with the siunitx package
 \DeclareSIUnit{\pixels}{px}
@@ -367,10 +377,10 @@
 % Shrinks the size of the argument, and puts it in math-enviroment. Well suited for small inline arrays.
 \newcommand{\vecsm}[1]{\mbox{\footnotesize ${#1}$ }}
 
-%	*** New Enviroments ***
-\definecolor{MyGray}{rgb}{0.83,0.83,0.83}			% Define the color used as a background color
-\setlength{\fboxrule}{0.5pt}					% Define the width of a borden -- only relevant if the "\fbox"-command uncommentet.
-\newcommand{\graybox}[1]{\vspace*{-0.2cm}			% Enviroment activatet as \graybox{  }, the contents of the box between the curly brackes. Contents may be broken into severel lines.
+%    *** New Enviroments ***
+\definecolor{MyGray}{rgb}{0.83,0.83,0.83}            % Define the color used as a background color
+\setlength{\fboxrule}{0.5pt}                    % Define the width of a borden -- only relevant if the "\fbox"-command uncommentet.
+\newcommand{\graybox}[1]{\vspace*{-0.2cm}            % Enviroment activatet as \graybox{  }, the contents of the box between the curly brackes. Contents may be broken into severel lines.
                        \begin{center}
                         \colorbox{MyGray}{
                          %\fbox{
