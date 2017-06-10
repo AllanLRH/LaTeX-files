@@ -237,36 +237,6 @@
 % Define the \email-function
 \DeclareUrlCommand\email{\urlstyle{rm}}
 
-% Alternative to Verbatim-enviroment -- and smarter. Example:https://texblog.wordpress.com/2008/04/02/include-source-code-in-latex-with-listings/ . Docuentation: http://www.ctan.org/tex-archive/macros/latex/contrib/listings/listings.pdf (58 pages).
-\usepackage{listings}
-\lstset{
-  language=python,
-  basicstyle=\footnotesize\ttfamily,                % the size of the fonts that are used for the code
-  numbers=left,                                     % where to put the line-numbers
-  numberstyle=\tiny\color{gray},                    % the style that is used for the line-numbers
-  stepnumber=1,                                     % the step between two line-numbers. If it's 1, each line will be numbered
-  numbersep=10pt,                                   % how far the line-numbers are from the code
-  backgroundcolor=\color{white},                    % choose the background color. You must add \usepackage{color}
-  showspaces=false,                                 % show spaces adding particular underscores
-  showstringspaces=false,                           % underline spaces within strings
-  showtabs=false,                                   % show tabs within strings adding particular underscores
-  frame=none,                                       % adds a frame around the code
-  % rulecolor=\color{black},                          % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
-  tabsize=4,                                        % sets default tabsize
-  captionpos=b,                                     % sets the caption-position to bottom
-  breaklines=true,                                  % sets automatic line breaking
-  breakatwhitespace=true,                           % sets if automatic breaks should only happen at whitespace
-  title=\lstname,                                   % show the filename of files included with \lstinputlisting; also try caption instead of title
-}
-
-% Easyier listing of source code using the listings package.
-% Syntax:
-%         \lstfile{A descriptive caption}{lst:listingLabel}{path/to/file.ext}
-\newcommand{\lstfile}[3]{\begin{minipage}{\textwidth}
-\lstinputlisting[caption={#1}, label=#2]{#3}
-\end{minipage}}
-
-
 % For creating enviroment with multiple colums. Note that figures is only supported in the \begin{figure*} -mode (*-mode), and they er stretched over all colulms. Initiated as: \begin{multicols} ... \end{multicols} . Documentation: http://www.ctan.org/tex-archive/macros/latex/required/tools/multicol.pdf
 % Example: http://en.wikibooks.org/wiki/LaTeX/Page_Layout#Multi-column_pages
 \usepackage{multicol}
